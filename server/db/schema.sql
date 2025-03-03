@@ -1,5 +1,5 @@
 -- DROP DATABASE
-DROP DATABASE IF EXISTS kanban_db;
+DROP DATABASE IF EXISTS call_of_coding_db;
 
 -- CREATE DATABASE
-CREATE DATABASE kanban_db;
+CREATE DATABASE call_of_coding_db;
