@@ -64,3 +64,5 @@ export function initUserModel(sequelize: Sequelize): typeof User {
 }
 
 export default User;
+
+//updated
