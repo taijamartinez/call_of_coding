@@ -1,6 +1,6 @@
-import { UserLogin } from "../interfaces/UserLogin";
 
-const login = async (userInfo: UserLogin) => {
+
+const login = async () => {
   // TODO: make a POST request to the login route
 }
 
