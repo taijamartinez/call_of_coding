@@ -1,7 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-
-// import Auth from '../utils/auth';
-// import { login } from "../api/authAPI";
+import Auth from '../utils/auth';
+import { login } from "../api/authAPI";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -9,7 +8,10 @@ const Login = () => {
     password: ''
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const [error, setError] = useState<string | null>(null);
+
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLoginData({
       ...loginData,
@@ -17,20 +19,37 @@ const Login = () => {
     });
   };
 
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // try {
-    //   const data = await login(loginData);
-    //   Auth.login(data.token);
-    // } catch (err) {
-    //   console.error('Failed to login', err);
-    // }
+    // resets error state
+    setError(null);
+
+    try {
+      // Call login API
+      const data = await login(loginData);
+      if (data?.token) {
+      // Stores token and redirects user
+      Auth.login(data.token);
+    } else {
+      setError("Invalid username or password.");
+    }
+  } catch (error) {
+    setError("Login failed. Please try again.");
+    console.error("Failed to login", error);
   };
+};
+
 
   return (
     <div className='container'>
       <form className='form' onSubmit={handleSubmit}>
+
         <h1>Login</h1>
+
+        {/* displays login error messages */}
+        {error && <p className="error-message">{error}</p>}
+        {/* username input */}
         <label >Username</label>
         <input 
           type='text'
@@ -38,6 +57,7 @@ const Login = () => {
           value={loginData.username || ''}
           onChange={handleChange}
         />
+        {/* password input */}
       <label>Password</label>
         <input 
           type='password'
@@ -45,7 +65,8 @@ const Login = () => {
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <button type='submit'>Submit Form</button>
+        {/* submit button */}
+        <button type='submit'>Login</button>
       </form>
     </div>
     
