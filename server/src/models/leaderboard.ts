@@ -1,6 +1,7 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
 
 
+
 //Leaderboard.belongsTo(User, { foreignKey: 'userId' }); -add this code if we want scores to be associated with a registered user.
 
 class Leaderboard extends Model {
@@ -11,7 +12,7 @@ class Leaderboard extends Model {
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
-export function TicketFactory(sequelize: Sequelize): typeof Leaderboard {
+export function initLeaderboardModel(sequelize: Sequelize): typeof Leaderboard {
 Leaderboard.init(
   {
     id: {
@@ -42,4 +43,6 @@ Leaderboard.init(
 return Leaderboard
 
 }
-    
+export { Leaderboard };
+//export default Leaderboard;
+//export if we want to use this model in other files.  

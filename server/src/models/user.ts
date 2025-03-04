@@ -29,7 +29,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 }
 }
 
-export function UserFactory(sequelize: Sequelize): typeof User {
+export function initUserModel(sequelize: Sequelize): typeof User {
   User.init(
     {
       id: {

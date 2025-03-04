@@ -1,7 +1,7 @@
-import  { Ticket }  from '../models/index.js';
+import  { Leaderboard }  from '../models/index.js';
 
 export const seedLeaderboard= async () => {
-  await Ticket.bulkCreate([
+  await Leaderboard.bulkCreate([
     { username: 'SyntaxSlayer', score: 20565, userId: 1 },
     { username: 'DebugDemon', score: 42395 , userId: 2 },
     { username: 'RootReaper', score: 10890 , userId: 3 },
