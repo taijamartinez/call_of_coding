@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
   const [ loginCheck, setLoginCheck ] = useState(false);
+  const location = useLocation();
 
   const checkLogin = () => {
     if (auth.loggedIn()) { // Assuming `auth.loggedIn()` checks if a user is logged in
@@ -14,9 +15,14 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(loginCheck);
     checkLogin();
   }, [loginCheck])
+
+  // if the user is on the login page, don't show the navbar
+
+  if (location.pathname === '/login') {
+    return null;
+  }
 
   return (
     <div className='nav'>
