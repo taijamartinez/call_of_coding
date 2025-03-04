@@ -2,11 +2,13 @@ import { JwtPayload, jwtDecode } from 'jwt-decode';
 
 class AuthService {
   getProfile() {
-    // TODO: return the decoded token
+    // Decode and return the token if available
+    const token = this.getToken();
+    return token ? jwtDecode<JwtPayload>(token) : null;
   }
 
   loggedIn() {
-    // TODO: return a value that indicates if the user is logged in
+    // returns a value that indicates if the user is logged in or if the token is expired
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
   }
@@ -15,26 +17,33 @@ class AuthService {
     // TODO: return a value that indicates if the token is expired
     try {
       const decoded = jwtDecode<JwtPayload>(token);
-      if (!decoded.exp) return true; // If no expiration, assume expired
-      return decoded.exp * 1000 < Date.now(); // Compare expiration to current time
+       // Assume expired if there's no expiration
+      if (!decoded.exp) return true;
+      // Convert to milliseconds
+      return decoded.exp * 1000 < Date.now(); 
     } catch (error) {
-      return true; // Invalid token = expired
+      // Invalid token means expired
+      return true; 
     }
   }
 
   getToken(): string | null {
-    // TODO: return the token
+    // Retrieves token from localStorage
     return localStorage.getItem('token');
   }
 
-  // login(idToken: string) {
-    // TODO: set the token to localStorage
-    // TODO: redirect to the home page
-  // }
+  login(idToken: string) {
+    // Store token in localStorage
+    localStorage.setItem('token', idToken);
+    // Redirect to dashboard
+    window.location.href = '/dashboard';
+  }
 
   logout() {
-    // TODO: remove the token from localStorage
-    // TODO: redirect to the login page
+    // Remove token from localStorage
+    localStorage.removeItem('token');
+    // Redirect to login page
+    window.location.href = '/login';
   }
 }
 
