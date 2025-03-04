@@ -43,12 +43,14 @@ const Login = () => {
 
   return (
     <div className='container'>
+      
       <form className='form' onSubmit={handleSubmit}>
 
         <h1>Login</h1>
 
         {/* displays login error messages */}
         {error && <p className="error-message">{error}</p>}
+
         {/* username input */}
         <label >Username</label>
         <input 
