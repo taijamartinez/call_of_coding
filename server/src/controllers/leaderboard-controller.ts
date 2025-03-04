@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { Ticket } from '../models/leaderboard.js';
-import { User } from '../models/user.js';
+import { Ticket, User } from '../models/index.js';
+
 
 // GET /tickets
 export const getAllTickets = async (_req: Request, res: Response) => {
@@ -57,14 +57,13 @@ export const createTicket = async (req: Request, res: Response) => {
 // PUT /tickets/:id
 export const updateTicket = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, status, description, assignedUserId } = req.body;
+  const { username, score, userId } = req.body;
   try {
     const ticket = await Ticket.findByPk(id);
     if (ticket) {
-      ticket.name = name;
-      ticket.status = status;
-      ticket.description = description;
-      ticket.assignedUserId = assignedUserId;
+      ticket.username = username;
+      ticket.score = score;
+      ticket.userId = userId;
       await ticket.save();
       res.json(ticket);
     } else {

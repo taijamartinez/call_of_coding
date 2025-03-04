@@ -1,6 +1,5 @@
-import { DataTypes, Model } from 'sequelize'; //removed Optional
-import { sequelize } from './index'; 
-//import { User } from './user'; //dont need if leaderboard doesnt directly reference the user model.
+import { DataTypes, Sequelize, Model } from 'sequelize';
+
 
 //Leaderboard.belongsTo(User, { foreignKey: 'userId' }); -add this code if we want scores to be associated with a registered user.
 
@@ -12,7 +11,7 @@ class Leaderboard extends Model {
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
-
+export function TicketFactory(sequelize: Sequelize): typeof Leaderboard {
 Leaderboard.init(
   {
     id: {
@@ -39,7 +38,8 @@ Leaderboard.init(
     timestamps: true,
   }
 );
-   
-  
-export default Leaderboard;
-//export if we want to use this model in other files. 
+
+return Leaderboard
+
+}
+    
