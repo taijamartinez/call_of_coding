@@ -1,4 +1,4 @@
-import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
+import { DataTypes, Sequelize, Model, Optional} from 'sequelize';
 import bcrypt from 'bcrypt';
 
 interface UserAttributes {
@@ -22,9 +22,13 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     const saltRounds = 10;
     this.password = await bcrypt.hash(password, saltRounds);
   }
+  // Validate password during login
+  public async checkPassword(enteredPassword: string): Promise<boolean> {
+    return bcrypt.compare(enteredPassword, this.password);
+}
 }
 
-export function UserFactory(sequelize: Sequelize): typeof User {
+export function initUserModel(sequelize: Sequelize): typeof User {
   User.init(
     {
       id: {
@@ -35,6 +39,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       password: {
         type: DataTypes.STRING,
@@ -57,3 +62,5 @@ export function UserFactory(sequelize: Sequelize): typeof User {
 
   return User;
 }
+
+export default User;
