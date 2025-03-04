@@ -6,8 +6,9 @@ import { sequelize } from './index';
 
 class Leaderboard extends Model {
   public id!: number;
-  public userId!: number; //optional? remove if not linking to users.
+  public username!: string; //optional? remove if not linking to users.
   public score!: number;
+  public userId!: number; //optional? remove if not linking to users.
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -19,15 +20,19 @@ Leaderboard.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
+    username: {
+      type: DataTypes.STRING,
       allowNull: false, //change to true if not required.
     },
     score: {
       type: DataTypes.INTEGER,
       allowNull: false, 
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: true, //change to false if required.
   },
+},
   {
     sequelize,
     modelName: 'Leaderboard',
