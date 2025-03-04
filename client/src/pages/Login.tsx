@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 
-import Auth from '../utils/auth';
-import { login } from "../api/authAPI";
+// import Auth from '../utils/auth';
+// import { login } from "../api/authAPI";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -19,12 +19,12 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    try {
-      const data = await login(loginData);
-      Auth.login(data.token);
-    } catch (err) {
-      console.error('Failed to login', err);
-    }
+    // try {
+    //   const data = await login(loginData);
+    //   Auth.login(data.token);
+    // } catch (err) {
+    //   console.error('Failed to login', err);
+    // }
   };
 
   return (
