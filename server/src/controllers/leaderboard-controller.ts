@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { Ticket, User } from '../models/index.js';
+import { Leaderboard, User } from '../models/index.js';
 
 
 // GET /tickets
 export const getAllTickets = async (_req: Request, res: Response) => {
   try {
-    const tickets = await Ticket.findAll({
+    const tickets = await Leaderboard.findAll({
       include: [
         {
           model: User,
@@ -24,7 +24,7 @@ export const getAllTickets = async (_req: Request, res: Response) => {
 export const getTicketById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const ticket = await Ticket.findByPk(id, {
+    const ticket = await Leaderboard.findByPk(id, {
       include: [
         {
           model: User,
@@ -47,7 +47,7 @@ export const getTicketById = async (req: Request, res: Response) => {
 export const createTicket = async (req: Request, res: Response) => {
   const { name, status, description, assignedUserId } = req.body;
   try {
-    const newTicket = await Ticket.create({ name, status, description, assignedUserId });
+    const newTicket = await Leaderboard.create({ name, status, description, assignedUserId });
     res.status(201).json(newTicket);
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -59,7 +59,7 @@ export const updateTicket = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { username, score, userId } = req.body;
   try {
-    const ticket = await Ticket.findByPk(id);
+    const ticket = await Leaderboard.findByPk(id);
     if (ticket) {
       ticket.username = username;
       ticket.score = score;
@@ -78,7 +78,7 @@ export const updateTicket = async (req: Request, res: Response) => {
 export const deleteTicket = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const ticket = await Ticket.findByPk(id);
+    const ticket = await Leaderboard.findByPk(id);
     if (ticket) {
       await ticket.destroy();
       res.json({ message: 'Ticket deleted' });
