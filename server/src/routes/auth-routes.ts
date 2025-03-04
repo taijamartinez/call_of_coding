@@ -51,3 +51,4 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
     res.status(500).json({ status: 'error', message: 'Internal Server Error' });
   }
 };
+
