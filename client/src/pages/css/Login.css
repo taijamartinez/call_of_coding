@@ -1,0 +1,153 @@
+/* BACKGROUND VIDEO CSS */
+
+/* Reset default browser styles for entire page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Styles the background video */
+.login-BG-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border: none;
+    /* ensures video displays under the login page components */
+    z-index: -1; 
+  }
+
+  /* Sets the container to allow video to render correctly across full page */
+.login-container {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; 
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* PAGE HEADER CSS */
+
+  /* Call-of-Coding text */
+.game-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Bungee Hairline", "DM Sans", sans-serif;
+    color: #00ff00;
+    font-size: 6rem;
+   
+}
+
+.warning-text{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* LOGIN FORM CSS */
+
+
+.form {
+    padding: 20px;
+    width: 100%;
+    margin-top: -10px;
+    
+  }
+  
+  .form label {
+    color: white;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 5px;
+  }
+  
+  .form input {
+    display: flex;
+    flex-direction: column;
+    width: 60%; /* Adjust input width */
+    padding: 5px;
+    background: black;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    outline: none;
+    text-align: center;
+  }
+  
+  .form button {
+    width: 40%;
+    padding: 10px;
+    background: black;
+    color: #00ff00;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+  
+  .form button:hover {
+    background: #00ff00;
+    color: black;
+    box-shadow: 0 0 15px #00ff00;
+  }
+
+  /* login form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #72727204;
+    width: 40vw;
+    height: 38vh;
+    background-color: rgba(0, 0, 0, 0.509);
+    border-radius: 10px;
+    margin-top: 20%;
+  
+    /* Green Glow Effect */
+     box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); 
+     border: 1.5px solid rgba(0, 255, 0, 0.8); 
+  
+    /* Animated Glow Effect */
+     animation: glow 1.5s infinite alternate;
+  }
+
+/* Adds a glow annimation to allow login container to blink and glow */
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+    }
+    100% {
+      box-shadow: 0 0 15px rgba(0, 255, 0, 1);
+    }
+  }
+
+/* LOGIN FORM TEXT */
+
+.Login-txt {
+    color: white;
+}
+
+/* username and login text in login form */
+.username-input-text {
+    color: white;
+}
+
+.password-input-text {
+    color: white;
+}
+
+/* error message when login fail */
+.error-message {
+    color: red;
+}
