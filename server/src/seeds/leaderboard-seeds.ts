@@ -1,6 +1,6 @@
 import  { Ticket }  from '../models/index.js';
 
-export const seedTickets= async () => {
+export const seedLeaderboard= async () => {
   await Ticket.bulkCreate([
     { username: 'SyntaxSlayer', score: 20565, userId: 1 },
     { username: 'DebugDemon', score: 42395 , userId: 2 },
