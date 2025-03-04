@@ -1,3 +1,6 @@
+import React from "react"; 
+import "./LeaderboardPage.css";
+
 const LeaderboardPage: React.FC = () => {
   const players = [
     { name: "Ikran", score: 1200, gamePlayed: "Fix Broken Function", timeTaken: "5m 30s" },

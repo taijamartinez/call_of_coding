@@ -1,2 +1,59 @@
-
+/* Cyberpunk/Hacker Style for Leaderboard */
+.leaderboard-container {
+    background-color: black;
+    color: #00ff00; 
+    font-family: "Courier New", monospace;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #00ff00; 
+    box-shadow: 0 0 10px #00ff00;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #008f11;
+  }
+  
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .leaderboard-table th,
+  .leaderboard-table td {
+    border: 1px solid #00ff00;
+    padding: 10px;
+  }
+  
+  .leaderboard-table th {
+    background-color: #002200;
+    color: #00ff00;
+  }
+  
+  .leaderboard-table tr:nth-child(even) {
+    background-color: rgba(0, 255, 0, 0.1);
+  }
+  
+  .leaderboard-table tr:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+  }
+  
+  /* Glowing Text Effect */
+  .glitch {
+    font-size: 1.5rem;
+    position: relative;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #008f11;
+    animation: glitch 0.8s infinite alternate;
+  }
+  
+  @keyframes glitch {
+    0% { text-shadow: 0 0 5px #00ff00, 0 0 10px #008f11; }
+    100% { text-shadow: 0 0 8px #00ff00, 0 0 15px #008f11; }
+  }
+  
   
