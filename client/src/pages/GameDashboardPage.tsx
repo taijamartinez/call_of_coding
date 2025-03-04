@@ -1,5 +1,5 @@
+import React from "react";
 import { Link } from "react-router-dom";
-
 type Game = {
   id: string;
   title: string;
@@ -29,10 +29,10 @@ const games: Game[] = [
   },
 ];
 
-const GameDashboardPage = () => {
+const GameDashboardPage: React.FC = () => {
   return (
     <div className="game-dashboard">
-      <h2>Select a Game</h2>
+      <h2>Select a Game!</h2>
       <div className="game-list">
         {games.map((game) => (
           <div key={game.id} className="game-card">

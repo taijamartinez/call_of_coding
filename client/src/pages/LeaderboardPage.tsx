@@ -1,4 +1,4 @@
-const LeaderboardPage = () => {
+const LeaderboardPage: React.FC = () => {
   const players = [
     { name: "Ikran", score: 1200, gamePlayed: "Fix Broken Function", timeTaken: "5m 30s" },
     { name: "Alyssa", score: 1300, gamePlayed: "Bug Buster", timeTaken: "3m 45s" },
