@@ -1,6 +1,7 @@
-//import { Request, Response } from 'express';
-//import { Game } from '../models/game.js';
-
+import { Request, Response } from 'express';
+import { Game } from '../models/game';
+import { db } from '../db';
+import { io } from '../server';
 
 // Get all active games
 // export const getAllGames = async (req: Request, res: Response) => {

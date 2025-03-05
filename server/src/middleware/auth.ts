@@ -29,3 +29,4 @@ export const authenticateToken = (
     res.sendStatus(401); // Unauthorized
   }
 };
+
