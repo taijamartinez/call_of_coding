@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-
 import Auth from '../utils/auth';
 import { login } from "../api/authAPI";
+import './css/Login.css';
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -9,7 +9,10 @@ const Login = () => {
     password: ''
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const [error, setError] = useState<string | null>(null);
+
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLoginData({
       ...loginData,
@@ -17,39 +20,79 @@ const Login = () => {
     });
   };
 
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    // resets error state
+    setError(null);
+
     try {
+      // Call login API
       const data = await login(loginData);
+      if (data?.token) {
+      // Stores token and redirects user
       Auth.login(data.token);
-    } catch (err) {
-      console.error('Failed to login', err);
+    } else {
+      setError("Invalid username or password.");
     }
-  };
+  } catch (error) {
+    setError("Login failed. Please try again.");
+    console.error("Failed to login", error);
+  }
+};
+
 
   return (
-    <div className='container'>
+    <div className='login-container'>
+
+      {/* displays BG video for login page */}
+      <video className= "login-BG-video" autoPlay loop muted>
+      {/* <source src={backgroundVideo} type="video/mp4" /> */}
+      Your browser does not support the video tag.
+      </video>
+
+      {/* Title and text section */}
+
+      <div className="title-container">
+        <h1 className="game-title">Call-of-Coding</h1>
+        <p className="warning-text">WARNING: This page contains top-secrete material. Do not continue unless permitted</p>
+
+      </div>
+
+
+      {/* Form section */}
+      <div className="form-container">
       <form className='form' onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label >Username</label>
+
+        <h1 className="Login-txt"></h1>
+
+        {/* displays login error messages */}
+        {error && <p className="error-message">{error}</p>}
+
+        {/* username input */}
+        <label className="username-input-text">Username:</label>
         <input 
           type='text'
           name='username'
           value={loginData.username || ''}
           onChange={handleChange}
         />
-      <label>Password</label>
+        {/* password input */}
+      <label className="password-input-text">Password:</label>
         <input 
           type='password'
           name='password'
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <button type='submit'>Submit Form</button>
+        {/* submit button */}
+        <button type='submit'>Login</button>
+
       </form>
+      </div>
     </div>
     
-  )
+  );
 };
 
 export default Login;
