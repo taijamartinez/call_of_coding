@@ -9,6 +9,8 @@ import LeaderboardPage from './pages/LeaderboardPage.js';
 import Login from './pages/Login.tsx';
 import auth from './utils/auth';
 
+// testing 1 2 3
+
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
   return auth.loggedIn() ? element : <Navigate to="/login" />;
 };
