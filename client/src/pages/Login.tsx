@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import Auth from '../utils/auth';
 import { login } from "../api/authAPI";
-import backgroundVideo from '../assets/login-BG-Video.mp4';
+// import backgroundVideo from '../assets/login-BG-Video.mp4';
 import './css/Login.css';
 
 const Login = () => {
@@ -42,21 +42,33 @@ const Login = () => {
   }
 };
 
+// allowed me to host the video in google docs to save space in repo
+const vimeoVideoUrl = "https://player.vimeo.com/video/1062656659?autoplay=1&loop=1&muted=1&background=1";
+
+
 
   return (
     <div className='login-container'>
 
       {/* displays BG video for login page */}
-      <video className= "login-BG-video" autoPlay loop muted>
-      <source src={backgroundVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-      </video>
+      
+      <div className="video-wrapper">
+      <iframe
+        src={vimeoVideoUrl}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+        allowFullScreen
+        className="login-BG-video"
+        title="Login Background Video"
+      ></iframe>
+    </div>
+
 
       {/* Title and text section */}
 
       <div className="title-container">
         <h1 className="game-title">Call-of-Coding</h1>
-        <p className="warning-text">WARNING: This page contains top-secrete material. Do not continue unless permitted</p>
+        <p className="warning-text"></p>
 
       </div>
 
@@ -65,7 +77,7 @@ const Login = () => {
       <div className="form-container">
       <form className='form' onSubmit={handleSubmit}>
 
-        <h1 className="Login-txt"></h1>
+        <h1 className="Login-txt">Login</h1>
 
         {/* displays login error messages */}
         {error && <p className="error-message">{error}</p>}
