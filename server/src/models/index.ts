@@ -18,7 +18,7 @@ const sequelize = process.env.DB_URL
 const User = initUserModel(sequelize);
 const Leaderboard = initLeaderboardModel(sequelize);
 
-User.hasMany(Leaderboard, { foreignKey: 'assignedUserId' });
-Leaderboard.belongsTo(User, { foreignKey: 'assignedUserId', as: 'assignedUser' });
+User.hasMany(Leaderboard, { foreignKey: 'userId' });
+Leaderboard.belongsTo(User, { foreignKey: 'userId', as: 'User' });
 
 export { sequelize, User, Leaderboard };
