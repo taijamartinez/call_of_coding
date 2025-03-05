@@ -1,11 +1,11 @@
-import { Ticket } from '../models/leaderboard.js';
+import  { Leaderboard }  from '../models/index.js';
 
-export const seedTickets = async () => {
-  await Ticket.bulkCreate([
-    { name: 'Design landing page', status: 'In Progress', description: 'Create wireframes and mockups for the landing page.', assignedUserId: 1 },
-    { name: 'Set up project repository', status: 'Done', description: 'Create a new repository on GitHub and initialize it with a README file.', assignedUserId: 2 },
-    { name: 'Implement authentication', status: 'Todo', description: 'Set up user authentication using JWT tokens.', assignedUserId: 1 },
-    { name: 'Test the API', status: 'Todo', description: 'Test the API using Insomnia.', assignedUserId: 1 },
-    { name: 'Deploy to production', status: 'Todo', description: 'Deploy the application to Render.', assignedUserId: 2 },
+export const seedLeaderboard= async () => {
+  await Leaderboard.bulkCreate([
+    { username: 'SyntaxSlayer', score: 20565, userId: 1 },
+    { username: 'DebugDemon', score: 42395 , userId: 2 },
+    { username: 'RootReaper', score: 10890 , userId: 3 },
+    { username: 'BooleanBoss', score: 85000 , userId: 4 },
+    { username: 'JavascriptJunkie', score: 15500 , userId: 5 },
   ]);
 };

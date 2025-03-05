@@ -1,20 +1,17 @@
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import './index.css';
-
 import App from './App.tsx';
-<<<<<<< HEAD
-import Board from './pages/LeaderboardPage.jsx';
+import ActiveGamePage from './pages/ActiveGamePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
-import EditTicket from './pages/GameDashboardPage.jsx';
-import CreateTicket from './pages/ActiveGamePage.jsx.tsx';
-=======
-import Board from './pages/ActiveGame.jsx';
-import ErrorPage from './pages/ErrorPage.tsx';
-import EditTicket from './pages/GameDashboardPage.jsx';
-import CreateTicket from './pages/LeaderboardPage.jsx';
->>>>>>> a83b99383772c55db2579765aa1969b5a063dbd9
+import GameDashboardPage from './pages/GameDashboardPage.tsx';
+import LeaderboardPage from './pages/LeaderboardPage.js';
 import Login from './pages/Login.tsx';
+import auth from './utils/auth';
+
+const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
+  return auth.loggedIn() ? element : <Navigate to="/login" />;
+};
 
 const router = createBrowserRouter([
   {
@@ -24,23 +21,31 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Board />
-      }, 
-      {
-        path: '/edit',
-        element: <EditTicket />
-      },
-      {
-        path: '/create',
-        element: <CreateTicket />
+        element: <Navigate to="/login" />,
       },
       {
         path: '/login',
         element: <Login />
-      }
-    ]
-  }
-])
+      },
+      {
+        path: '/dashboard',
+        element: <ProtectedRoute element={<GameDashboardPage />} />
+      },
+      {
+        path: '/active-game',
+        element: <ProtectedRoute element={<ActiveGamePage />}/>,
+      },
+      {
+        path: '/game/:gameId', 
+        element: <ProtectedRoute element={<ActiveGamePage />} />,
+      },
+      {
+        path: '/leaderboard',
+        element: <ProtectedRoute element={<LeaderboardPage />} />
+      },
+    ],
+  },
+]);
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
