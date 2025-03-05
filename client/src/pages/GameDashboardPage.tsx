@@ -8,11 +8,6 @@ type Game = {
 
 const games: Game[] = [
   {
-    id: "fix-broken-function",
-    title: "Fix Broken Function",
-    description: "Find and repair the missing function in the code before time runs out!",
-  },
-  {
     id: "bug-buster",
     title: "Bug Buster",
     description: "Hunt down and squash all the bugs hiding in the program.",
@@ -23,10 +18,16 @@ const games: Game[] = [
     description: "Solve a series of coding challenges to advance through the quest.",
   },
   {
-    id: "code-rush",
-    title: "Code Rush",
+    id: "cursed-code",
+    title: "Cursed Code",
     description: "Complete as many coding puzzles as possible before time expires!",
   },
+  {
+    id: "hacker-heist",
+    title: "Hacker Heist",
+    description: "Find and repair the missing function in the code before time runs out!",
+  }
+  
 ];
 
 const GameDashboardPage: React.FC = () => {
