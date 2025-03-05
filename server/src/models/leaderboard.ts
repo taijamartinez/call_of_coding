@@ -8,7 +8,7 @@ class Leaderboard extends Model {
   public id!: number;
   public username!: string; //optional? remove if not linking to users.
   public score!: number;
-  public userId!: number; //optional? remove if not linking to users.
+  public userId?: number; //optional? remove if not linking to users.
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }

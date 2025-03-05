@@ -1,7 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import Auth from '../utils/auth';
 import { login } from "../api/authAPI";
-// import backgroundVideo from '../assets/login-BG-Video.mp4';
 import './css/Login.css';
 
 const Login = () => {
