@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { Ticket } from '../models/leaderboard.js';
-import { User } from '../models/user.js';
+import { Leaderboard, User } from '../models/index.js';
+
 
 // GET /tickets
 export const getAllTickets = async (_req: Request, res: Response) => {
@@ -9,7 +9,7 @@ export const getAllTickets = async (_req: Request, res: Response) => {
       include: [
         {
           model: User,
-          as: 'assignedUser', // This should match the alias defined in the association
+          as: 'User', // This should match the alias defined in the association. //taija- changed from AssignedUser to User to match the names in my files. UserId and User was used.
           attributes: ['username'], // Include only the username attribute
         },
       ],
@@ -28,7 +28,7 @@ export const getTicketById = async (req: Request, res: Response) => {
       include: [
         {
           model: User,
-          as: 'assignedUser', // This should match the alias defined in the association
+          as: 'User', // This should match the alias defined in the association
           attributes: ['username'], // Include only the username attribute
         },
       ],
@@ -45,9 +45,9 @@ export const getTicketById = async (req: Request, res: Response) => {
 
 // POST /tickets
 export const createTicket = async (req: Request, res: Response) => {
-  const { name, status, description, assignedUserId } = req.body;
+  const { name, status, description, userId } = req.body;
   try {
-    const newTicket = await Leaderboard.create({ name, status, description, assignedUserId });
+    const newTicket = await Leaderboard.create({ name, status, description, userId });
     res.status(201).json(newTicket);
   } catch (error: any) {
     res.status(400).json({ message: error.message });
