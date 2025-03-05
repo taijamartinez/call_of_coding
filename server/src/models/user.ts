@@ -5,7 +5,7 @@ interface UserAttributes {
   id: number;
   username: string;
   password: string;
-  email?: string;
+  //email?: string; //uncomment if needed
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -66,4 +66,3 @@ export function initUserModel(sequelize: Sequelize): typeof User {
 
 export default User;
 
-//updated
