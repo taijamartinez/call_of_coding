@@ -17,6 +17,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+  email: any;
 
   // Hash the password before saving the user
   public async setPassword(password: string) {
