@@ -4,6 +4,9 @@ dotenv.config();
 import { Sequelize } from 'sequelize';
 import { initUserModel } from './user.js';
 import { initLeaderboardModel}  from './leaderboard.js';
+import { initGameModel } from './games.js';
+
+
 
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
@@ -17,8 +20,12 @@ const sequelize = process.env.DB_URL
 
 const User = initUserModel(sequelize);
 const Leaderboard = initLeaderboardModel(sequelize);
+const Games = initGameModel(sequelize);
 
 User.hasMany(Leaderboard, { foreignKey: 'userId' });
-Leaderboard.belongsTo(User, { foreignKey: 'userId', as: 'User' });
+Leaderboard.belongsTo(User, { foreignKey: 'userId', as: 'users' });
+Games.hasMany(Leaderboard, { foreignKey: 'gamesId' });
+Leaderboard.belongsTo(Games, { foreignKey: 'gamesId', as: 'games' });
 
-export { sequelize, User, Leaderboard };
+export { sequelize, User, Leaderboard, Games };
+

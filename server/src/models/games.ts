@@ -1,35 +1,50 @@
-import { DataTypes, Sequelize, Model, Optional} from 'sequelize';
-import bcrypt from 'bcrypt';
+import { DataTypes, Sequelize, Model } from 'sequelize';
 
 interface GameAttributes {
   id: number;
-  username: string;
-  password: string;
-  email?: string; 
+  title: string;
+  description: string;
+  image: string; 
+  link: string;
 }
 
-interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
+//interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
 
-export class Games extends Model<GameAttributes, GameCreationAttributes> implements GameAttributes {
+export class Games extends Model<GameAttributes> implements GameAttributes {
   public id!: number;
-  public username!: string;
-  public password!: string;
+  public title!: string;
+  public description!: string;
+  public image!: string;
+  public link!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-  email: any;
+  
 
 }
 
-export function initGameModel(sequelize: Sequelize): typeof Game {
-  Game.init(
+export function initGameModel(sequelize: Sequelize): typeof Games {
+  Games.init(
     {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      username: {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      link: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -38,14 +53,9 @@ export function initGameModel(sequelize: Sequelize): typeof Game {
     {
       tableName: 'games',
       sequelize,
-      hooks: {
-        
-      }
     }
   );
 
   return Games;
 }
-
-export default Games;
 

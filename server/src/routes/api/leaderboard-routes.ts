@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { Leaderboard } from "../../models/leaderboard.js";
+import { Leaderboard } from "../../models/index.js";
 import { createTicket, getTicketById } from "../../controllers/leaderboard-controller";
 
 
