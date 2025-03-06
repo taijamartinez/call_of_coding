@@ -2,8 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { Sequelize } from 'sequelize';
-import { UserFactory } from './user.js';
-import { TicketFactory } from './leaderboard.js';
+import { initUserModel } from './user.js';
+import { initLeaderboardModel}  from './leaderboard.js';
 
 const sequelize = process.env.DB_URL
   ? new Sequelize(process.env.DB_URL)
@@ -15,10 +15,10 @@ const sequelize = process.env.DB_URL
     },
   });
 
-const User = UserFactory(sequelize);
-const Ticket = TicketFactory(sequelize);
+const User = initUserModel(sequelize);
+const Leaderboard = initLeaderboardModel(sequelize);
 
-User.hasMany(Ticket, { foreignKey: 'assignedUserId' });
-Ticket.belongsTo(User, { foreignKey: 'assignedUserId', as: 'assignedUser' });
+User.hasMany(Leaderboard, { foreignKey: 'userId' });
+Leaderboard.belongsTo(User, { foreignKey: 'userId', as: 'User' });
 
-export { sequelize, User, Ticket };
+export { sequelize, User, Leaderboard };

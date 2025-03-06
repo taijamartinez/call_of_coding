@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import { Ticket } from '../models/leaderboard.js';
-import { User } from '../models/user.js';
+import { Leaderboard, User } from '../models/index.js';
+
 
 // GET /tickets
 export const getAllTickets = async (_req: Request, res: Response) => {
   try {
-    const tickets = await Ticket.findAll({
+    const tickets = await Leaderboard.findAll({
       include: [
         {
           model: User,
-          as: 'assignedUser', // This should match the alias defined in the association
+          as: 'User', // This should match the alias defined in the association. //taija- changed from AssignedUser to User to match the names in my files. UserId and User was used.
           attributes: ['username'], // Include only the username attribute
         },
       ],
@@ -24,11 +24,11 @@ export const getAllTickets = async (_req: Request, res: Response) => {
 export const getTicketById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const ticket = await Ticket.findByPk(id, {
+    const ticket = await Leaderboard.findByPk(id, {
       include: [
         {
           model: User,
-          as: 'assignedUser', // This should match the alias defined in the association
+          as: 'User', // This should match the alias defined in the association
           attributes: ['username'], // Include only the username attribute
         },
       ],
@@ -45,9 +45,9 @@ export const getTicketById = async (req: Request, res: Response) => {
 
 // POST /tickets
 export const createTicket = async (req: Request, res: Response) => {
-  const { name, status, description, assignedUserId } = req.body;
+  const { name, status, description, userId } = req.body;
   try {
-    const newTicket = await Ticket.create({ name, status, description, assignedUserId });
+    const newTicket = await Leaderboard.create({ name, status, description, userId });
     res.status(201).json(newTicket);
   } catch (error: any) {
     res.status(400).json({ message: error.message });
@@ -57,14 +57,13 @@ export const createTicket = async (req: Request, res: Response) => {
 // PUT /tickets/:id
 export const updateTicket = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, status, description, assignedUserId } = req.body;
+  const { username, score, userId } = req.body;
   try {
-    const ticket = await Ticket.findByPk(id);
+    const ticket = await Leaderboard.findByPk(id);
     if (ticket) {
-      ticket.name = name;
-      ticket.status = status;
-      ticket.description = description;
-      ticket.assignedUserId = assignedUserId;
+      ticket.username = username;
+      ticket.score = score;
+      ticket.userId = userId;
       await ticket.save();
       res.json(ticket);
     } else {
@@ -79,7 +78,7 @@ export const updateTicket = async (req: Request, res: Response) => {
 export const deleteTicket = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const ticket = await Ticket.findByPk(id);
+    const ticket = await Leaderboard.findByPk(id);
     if (ticket) {
       await ticket.destroy();
       res.json({ message: 'Ticket deleted' });
