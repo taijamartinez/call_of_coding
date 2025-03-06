@@ -1,5 +1,5 @@
 import React from "react";
-import "./GameDashboardPage.css";
+import "./css/GameDashboardPage.css";
 import { Link } from "react-router-dom";
 type Game = {
   id: string;

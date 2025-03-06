@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import { Router, Request, Response } from 'express';
-import { User } from '../models/user.js';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-
-export const login = async (req: Request, res: Response) => {
-  // TODO: If the user exists and the password is correct, return a JWT token
-=======
 import { Router, type Request, type Response } from 'express';
 import { User } from '../models/index.js';
 import jwt from 'jsonwebtoken';
@@ -82,7 +73,6 @@ const registerUser = async (req: Request, res: Response): Promise<void> => {
     console.error(error); // log error for debugging purposes
     res.status(500).json({ status: 'error', message: 'Internal Server Error' });
   }
->>>>>>> main
 };
 
 const router = Router();
@@ -90,10 +80,7 @@ const router = Router();
 // POST /login - Login a user
 router.post('/login', login);
 
-<<<<<<< HEAD
-=======
 // POST /login - Login a user
 router.post('/register', registerUser);
 
->>>>>>> main
 export default router;
