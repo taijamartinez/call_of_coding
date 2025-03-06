@@ -1,47 +1,35 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import auth from '../utils/auth';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import auth from "../utils/auth";
+import "./css/Navbar.css"; // Import the CSS file
 
 const Navbar = () => {
-  const [ loginCheck, setLoginCheck ] = useState(false);
-
-  const checkLogin = () => {
-    if (auth.loggedIn()) {
-      setLoginCheck(true);
-    } else {
-      setLoginCheck(false);
-    }
-  };
+  const [loginCheck, setLoginCheck] = useState(false);
 
   useEffect(() => {
-    console.log(loginCheck);
-    checkLogin();
-  }, [loginCheck])
+    setLoginCheck(auth.loggedIn());
+  }, []);
 
   return (
-    <div className='nav'>
-      <div className='nav-title'>
-        <Link to='/'>Call of Coding</Link>
+    <nav className="navbar">
+      <div className="nav-title">
+        <Link to="/" className="nav-logo">Call of Coding</Link>
       </div>
-      <ul>
-      {
-        !loginCheck ? (
-          <li className='nav-item'>
-            <button type='button'>
-              <Link to='/login'>Login</Link>
-            </button>
+      <ul className="nav-links">
+        {!loginCheck ? (
+          <li className="nav-item">
+            <Link to="/login" className="nav-button">Login</Link>
           </li>
         ) : (
-          <li className='nav-item'>
-            <button type='button' onClick={() => {
-              auth.logout();
-            }}>Logout</button>
+          <li className="nav-item">
+            <button className="nav-button logout-btn" onClick={auth.logout}>
+              Logout
+            </button>
           </li>
-        )
-      }
+        )}
       </ul>
-    </div>
-  )
-}
+    </nav>
+  );
+};
 
 export default Navbar;

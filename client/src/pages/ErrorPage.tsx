@@ -9,7 +9,7 @@ const ErrorPage = () => {
       <p className="error-message">Island not found</p>
 
       <div className="button-container">
-        <Link to="/next-place" className="error-button">NEXT PLACE</Link>
+      <Link to="/dashboard" className="error-button">GAMES</Link>
         <Link to="/" className="error-button">BACK TO HOME</Link>
       </div>
 
