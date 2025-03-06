@@ -13,6 +13,7 @@ const games = [
     description: "Find and repair the missing function in the code before time runs out!",
     image: fixBrokenFunctionImg,
     link: "/play-fix-broken-function"
+    
   },
   {
     title: "Bug Buster",
@@ -45,7 +46,9 @@ const GameDashboardPage = () => {
             <div className="game-info">
               <h2 className="game-title">{game.title}</h2>
               <p className="game-description">{game.description}</p>
-              <Link to={game.link} className="play-button">Play {game.title}</Link>
+              </div>
+              <div className="game-button-container">
+              <Link to={game.link} className="play-button">Play</Link>
             </div>
           </div>
         ))}
