@@ -1,67 +1,78 @@
-
-import { Router, type Request, type Response } from 'express';
-import { User } from '../models/index.js';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { User } from '../models/user'; // Ensure User model is imported
-import validator from 'validator'; // If you choose to use validator for email validation
+import { User } from '../models/user';
+import validator from 'validator';
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
   const { username, password, email } = req.body;
 
   try {
-    // Check if all required fields are provided
     if (!username || !password || !email) {
       res.status(400).json({ status: 'error', message: 'Username, email, and password are required' });
       return;
     }
 
-    // Validate email format
     if (!validator.isEmail(email)) {
       res.status(400).json({ status: 'error', message: 'Invalid email format' });
       return;
     }
 
-    // Check if the user with the same email already exists
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       res.status(409).json({ status: 'error', message: 'Email is already in use' });
       return;
     }
 
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new user
     const newUser = await User.create({
       username,
-      email, // Ensure email is saved
+      email,
       password: hashedPassword,
     });
 
-    // Send a response with necessary user data (exclude sensitive data like password)
     res.status(201).json({
       status: 'success',
       message: 'User registered successfully',
       user: {
         id: newUser.id,
         username: newUser.username,
-        // email: newUser.email,
+        email: newUser.email,
       },
     });
   } catch (error) {
-    console.error(error); // log error for debugging purposes
+    console.error(error);
     res.status(500).json({ status: 'error', message: 'Internal Server Error' });
   }
 };
 
-const router = Router();
+export const loginUser = async (req: Request, res: Response): Promise<void> => {
+  const { email, password } = req.body;
 
-// POST /login - Login a user
-router.post('/login', login);
+  try {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      res.status(401).json({ status: 'error', message: 'Invalid email or password' });
+      return;
+    }
 
-// POST /login - Login a user
-router.post('/register', registerUser);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      res.status(401).json({ status: 'error', message: 'Invalid email or password' });
+      return;
+    }
 
-export default router;
+    res.status(200).json({
+      status: 'success',
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ status: 'error', message: 'Internal Server Error' });
+  }
+};
