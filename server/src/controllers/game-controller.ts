@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { Game } from '../models/games'; 
-import { io } from '../server'; 
+import  Game  from '../models/games'; 
+
 
 
 
