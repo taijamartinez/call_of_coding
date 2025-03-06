@@ -1,39 +1,63 @@
-const LeaderboardPage: React.FC = () => {
-  const players = [
-    { name: "Ikran", score: 1200, gamePlayed: "Fix Broken Function", timeTaken: "5m 30s" },
-    { name: "Alyssa", score: 1300, gamePlayed: "Bug Buster", timeTaken: "3m 45s" },
-    { name: "Stacy", score: 2000, gamePlayed: "Code Quest", timeTaken: "2m 30s" },
-    { name: "Taija", score: 1660, gamePlayed: "Code Rush", timeTaken: "4m 45s" },
-   
-  ];
+import { useState, useEffect } from "react";
+import "./css/LeaderboardPage.css";
+
+interface Player {
+  id: number;
+  username: string;
+  game: string;
+  time: string;
+  points: number;
+}
+
+const LeaderboardPage = () => {
+  // State to store leaderboard data
+  const [leaderboard, setLeaderboard] = useState<Player[]>([]);
+
+  // Fetch leaderboard data (Simulated for now)
+  useEffect(() => {
+    // Replace this with an API call later
+    const storedLeaderboard: Player[] = [
+      { id: 1, username: "Player1", game: "Code Quest", time: "03:25", points: 150 },
+      { id: 2, username: "Player2", game: "Bug Buster", time: "02:40", points: 200 },
+    ];
+    setLeaderboard(storedLeaderboard);
+  }, []);
+
   return (
-    <div className="leaderboard">
-      <h2>Leaderboard</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Player</th>
-            <th>Game Played</th>
-            <th>Time Taken</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {players.map((player, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{player.name}</td>
-              <td>{player.gamePlayed}</td>
-              <td>{player.timeTaken}</td>
-              <td>{player.score} pts</td>
+    <div className="leaderboard-container">
+      {/* Navbar */}
+      <div className="navbar">
+        <button className="nav-button">Home</button>
+        <button className="nav-button active">Leaderboard</button>
+        <button className="nav-button">Logout</button>
+      </div>
+
+      {/* Leaderboard Section */}
+      <div className="leaderboard-box">
+        <h2>Leaderboard:</h2>
+        <table className="leaderboard-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Game</th>
+              <th>Time</th>
+              <th>Points</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {leaderboard.map((player) => (
+              <tr key={player.id}>
+                <td>{player.username}</td>
+                <td>{player.game}</td>
+                <td>{player.time}</td>
+                <td>{player.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
-
 
 export default LeaderboardPage;

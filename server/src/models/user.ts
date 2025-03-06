@@ -5,7 +5,7 @@ interface UserAttributes {
   id: number;
   username: string;
   password: string;
-  //email?: string; //uncomment if needed
+  email?: string; //uncomment if needed
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
