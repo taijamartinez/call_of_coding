@@ -32,10 +32,13 @@ const router = createBrowserRouter([
         element: <ProtectedRoute element={<GameDashboardPage />} />
       },
       {
-        path: '/game/:gameId',
+        path: '/active-game',
         element: <ProtectedRoute element={<ActiveGamePage />}/>,
       },
-      
+      {
+        path: '/game/:gameId', 
+        element: <ProtectedRoute element={<ActiveGamePage />} />,
+      },
       {
         path: '/leaderboard',
         element: <ProtectedRoute element={<LeaderboardPage />} />

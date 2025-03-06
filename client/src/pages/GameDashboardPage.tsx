@@ -9,9 +9,9 @@ type Game = {
 
 const games: Game[] = [
   {
-    id: "hacker-heist",
-    title: "Hacker Heist",
-    description: "Crack the encrypted code to retrieve stolen data.",
+    id: "fix-broken-function",
+    title: "Fix Broken Function",
+    description: "Find and repair the missing function in the code before time runs out!",
   },
   {
     id: "bug-buster",
@@ -24,9 +24,9 @@ const games: Game[] = [
     description: "Solve a series of coding challenges to advance through the quest.",
   },
   {
-    id: "cursed-codebase",
-    title: "Cursed Codebase Escape",
-    description: "Escape the infinite loop before it’s too late!",
+    id: "code-rush",
+    title: "Code Rush",
+    description: "Complete as many coding puzzles as possible before time expires!",
   },
 ];
 
