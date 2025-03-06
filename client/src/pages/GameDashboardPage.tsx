@@ -1,47 +1,55 @@
-import React from "react";
-import "./css/GameDashboardPage.css";
 import { Link } from "react-router-dom";
-type Game = {
-  id: string;
-  title: string;
-  description: string;
-};
+import "./css/GameDashboardPage.css";
 
-const games: Game[] = [
+// Importing game images
+import fixBrokenFunctionImg from "../assets/fix-broken-function.png";
+import bugBusterImg from "../assets/bug-buster.png";
+import codeQuestImg from "../assets/code-quest.png";
+import codeRushImg from "../assets/code-rush.png";
+
+const games = [
   {
-    id: "fix-broken-function",
     title: "Fix Broken Function",
     description: "Find and repair the missing function in the code before time runs out!",
+    image: fixBrokenFunctionImg,
+    link: "/play-fix-broken-function"
+    
   },
   {
-    id: "bug-buster",
     title: "Bug Buster",
     description: "Hunt down and squash all the bugs hiding in the program.",
+    image: bugBusterImg,
+    link: "/play-bug-buster"
   },
   {
-    id: "code-quest",
     title: "Code Quest",
     description: "Solve a series of coding challenges to advance through the quest.",
+    image: codeQuestImg,
+    link: "/play-code-quest"
   },
   {
-    id: "code-rush",
     title: "Code Rush",
     description: "Complete as many coding puzzles as possible before time expires!",
+    image: codeRushImg,
+    link: "/play-code-rush"
   },
 ];
 
-const GameDashboardPage: React.FC = () => {
+const GameDashboardPage = () => {
   return (
     <div className="game-dashboard">
-      <h2>Select a Game!</h2>
+      <h1 className="dashboard-title">Select a Game!</h1>
       <div className="game-list">
-        {games.map((game) => (
-          <div key={game.id} className="game-card">
-            <h3>{game.title}</h3>
-            <p>{game.description}</p>
-            <Link to={`/game/${game.id}`}>
-              <button className="play-button">Play {game.title}</button>
-            </Link>
+        {games.map((game, index) => (
+          <div key={index} className="game-card">
+            <img src={game.image} alt={game.title} className="game-image" />
+            <div className="game-info">
+              <h2 className="game-title">{game.title}</h2>
+              <p className="game-description">{game.description}</p>
+              </div>
+              <div className="game-button-container">
+              <Link to={game.link} className="play-button">Play</Link>
+            </div>
           </div>
         ))}
       </div>

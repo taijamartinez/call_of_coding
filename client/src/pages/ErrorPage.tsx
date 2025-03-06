@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./css/ErrorPage.css";
 import pixelIsland from "../assets/pixel-island.png"; 
+import Navbar from "../components/Navbar";
 
 const ErrorPage = () => {
   return (
@@ -9,7 +10,7 @@ const ErrorPage = () => {
       <p className="error-message">Island not found</p>
 
       <div className="button-container">
-        <Link to="/next-place" className="error-button">NEXT PLACE</Link>
+      <Link to="/dashboard" className="error-button">GAMES</Link>
         <Link to="/" className="error-button">BACK TO HOME</Link>
       </div>
 

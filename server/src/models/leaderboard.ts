@@ -6,9 +6,9 @@ import { DataTypes, Sequelize, Model } from 'sequelize';
 
 class Leaderboard extends Model {
   public id!: number;
-  public username!: string; //optional? remove if not linking to users.
+  public username!: string; 
   public score!: number;
-  public userId?: number; //optional? remove if not linking to users.
+  public userId!: number; 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -45,4 +45,4 @@ return Leaderboard
 }
 export { Leaderboard };
 //export default Leaderboard;
-//export if we want to use this model in other files.  
+  

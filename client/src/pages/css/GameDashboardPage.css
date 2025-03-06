@@ -1,97 +1,95 @@
 .game-dashboard {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    background-color: #222;
-    padding: 10px 20px;
-  }
-  
-  .navbar a, .logout-btn {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .logout-btn:hover {
-    text-decoration: underline;
-  }
-  
-  .dashboard-heading {
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .game-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .game-card {
-    display: flex;
-    align-items: center;
-    border: 2px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
-    width: 80%;
-    background-color: #f9f9f9;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .game-image {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    margin-right: 15px;
-  }
-  
-  .difficulty {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #ffcc00;
-    padding: 3px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .game-info {
-    flex-grow: 1;
-    text-align: left;
-  }
-  
-  .accept-btn {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    animation: flash 1s infinite alternate;
-    border-radius: 5px;
-  }
-  
-  @keyframes flash {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0.6;
-    }
-  }
-  
-  .accept-btn:hover {
-    background-color: darkred;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #003300; /* Dark green background */
+}
+
+.game-dashboard h1 {
+  color: #00ff00;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Press Start 2P", cursive; 
+}
+
+.game-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  width: 80%;
+  max-width: 900px;
+}
+
+.game-card {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 4px 4px 0px #222;
+  transition: transform 0.2s ease-in-out;
+  justify-content: space-between;
+}
+
+.game-card:hover {
+  transform: scale(1.02);
+}
+
+.game-card img {
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.game-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title {
+  font-size: 1.5rem;
+  color: #00ff00;
+  font-family: "Press Start 2P", cursive;
+  margin-bottom: 5px;
+}
+
+.game-description {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.game-link {
+  color: blue;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.game-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 150px;
+}
+
+.play-button {
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.8rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  border: 2px solid #00ff00;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+}
+.play-button:hover {
+  background-color: #ff002b;
+  color: black;
+  box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+}

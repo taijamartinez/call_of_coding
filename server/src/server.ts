@@ -10,6 +10,14 @@ import { sequelize } from './models/index.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+import { Server } from 'socket.io';
+import http from 'http';
+
+const server = http.createServer(app);
+const io = new Server(server);
+
+export { io };
+
 // Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
 
