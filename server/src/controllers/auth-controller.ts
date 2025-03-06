@@ -1,14 +1,20 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
-import { User } from '../models/user';
+import { User } from '../models/index.js';
 import validator from 'validator';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables
+
+const secretKey = process.env.JWT_SECRET_KEY as string; // Ensure it's set
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
   const { username, password, email } = req.body;
 
   try {
     if (!username || !password || !email) {
-      res.status(400).json({ status: 'error', message: 'Username, email, and password are required' });
+      res.status(400).json({ status: 'error', message: 'Missing required fields' });
       return;
     }
 
@@ -19,7 +25,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
-      res.status(409).json({ status: 'error', message: 'Email is already in use' });
+      res.status(409).json({ status: 'error', message: 'Email already in use' });
       return;
     }
 
@@ -31,6 +37,8 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
       password: hashedPassword,
     });
 
+    const token = jwt.sign({ email: newUser.email, id: newUser.id }, secretKey, { expiresIn: '1h' });
+
     res.status(201).json({
       status: 'success',
       message: 'User registered successfully',
@@ -39,6 +47,7 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
         username: newUser.username,
         email: newUser.email,
       },
+      token, // Return the token after successful user creation
     });
   } catch (error) {
     console.error(error);
@@ -62,6 +71,8 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    const token = jwt.sign({ email: user.email, id: user.id }, secretKey, { expiresIn: '1h' });
+
     res.status(200).json({
       status: 'success',
       message: 'Login successful',
@@ -70,6 +81,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         username: user.username,
         email: user.email,
       },
+      token, // Return token on successful login
     });
   } catch (error) {
     console.error(error);

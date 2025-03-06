@@ -9,6 +9,7 @@ class Leaderboard extends Model {
   public username!: string; 
   public score!: number;
   public userId!: number; 
+  public gamesId!: number; 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -32,6 +33,10 @@ Leaderboard.init(
       type: DataTypes.INTEGER,
       allowNull: true, //change to false if required.
   },
+    gamesId: {
+    type: DataTypes.INTEGER,
+    allowNull: true, //change to false if required.
+},
 },
   {
     sequelize,
@@ -43,6 +48,5 @@ Leaderboard.init(
 return Leaderboard
 
 }
-export { Leaderboard };
-//export default Leaderboard;
+
   
