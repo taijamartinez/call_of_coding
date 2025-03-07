@@ -13,9 +13,13 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-title">
-        <Link to="/" className="nav-logo">Call of Coding</Link>
+        <Link to="/dashboard" className="nav-logo">Call of Coding</Link>
       </div>
       <ul className="nav-links">
+        <li className="nav-item">
+          <Link to="/leaderboard" className="nav-button">Leaderboard</Link>
+        </li>
+
         {!loginCheck ? (
           <li className="nav-item">
             <Link to="/login" className="nav-button">Login</Link>

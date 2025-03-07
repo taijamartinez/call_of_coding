@@ -43,7 +43,11 @@ export function initUserModel(sequelize: Sequelize): typeof User {
         allowNull: false,
         unique: true,
       },
-      password: {
+      //email: { 
+       // type: DataTypes.STRING, 
+       // allowNull: false, 
+       // unique: true },
+        password: {
         type: DataTypes.STRING,
         allowNull: false,
       },

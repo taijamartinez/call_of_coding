@@ -2,8 +2,8 @@
 
 export const gameData = [
     {
-        id: "hacker-heist",
-        title: "Hacker Heist",
+        id: "fix-broken-function",
+        title: "Fix Broken Function",
         story: "A secret agency has tasked you with cracking an encrypted code to retrieve stolen data before it’s too late.",
         questions: [
           {
