@@ -24,4 +24,8 @@ router.put('/:id', updateUser);
 // DELETE /users/:id - Delete a user by id
 router.delete('/:id', deleteUser);
 
-export default { router };
+
+export { router as userRouter };
+
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

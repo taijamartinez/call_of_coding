@@ -29,3 +29,4 @@ Leaderboard.belongsTo(Games, { foreignKey: 'gamesId', as: 'Game' });
 
 export { sequelize, User, Leaderboard, Games };
 
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

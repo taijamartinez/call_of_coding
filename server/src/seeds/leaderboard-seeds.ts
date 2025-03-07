@@ -9,3 +9,6 @@ export const seedLeaderboard= async () => {
     { username: 'JavascriptJunkie', score: 15500 , gamesId: 4, userId: 5 },
   ]);
 };
+
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

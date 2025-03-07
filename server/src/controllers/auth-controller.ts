@@ -95,3 +95,5 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ status: 'error', message: 'Internal Server Error' });
   }
 };
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

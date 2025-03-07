@@ -69,3 +69,4 @@ export function initUserModel(sequelize: Sequelize): typeof User {
   return User;
 }
 
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
