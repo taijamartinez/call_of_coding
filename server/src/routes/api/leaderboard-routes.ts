@@ -25,4 +25,4 @@ leaderboardRouter.get('/:id',getLeaderboardEntryById );
 // POST create a new leaderboard
 leaderboardRouter.post('/', createLeaderboardEntry);
 
-export default { leaderboardRouter };
+export { leaderboardRouter };
