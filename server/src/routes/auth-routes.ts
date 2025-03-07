@@ -12,4 +12,3 @@ router.post('/register', registerUser);
 
 export default router;
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

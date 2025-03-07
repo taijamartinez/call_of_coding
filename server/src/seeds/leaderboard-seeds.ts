@@ -11,4 +11,3 @@ export const seedLeaderboard= async () => {
 };
 
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

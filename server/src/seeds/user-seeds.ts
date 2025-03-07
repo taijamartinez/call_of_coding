@@ -2,13 +2,13 @@ import { User } from '../models/user.js';
 
 export const seedUsers = async () => {
   await User.bulkCreate([
-    { username: 'SyntaxSlayer', email: 'syntax@example.com', password: 'password' },
-    { username: 'DebugDemon', email: 'debug@example.com', password: 'password' },
-    { username: 'RootReaper', email: 'root@example.com', password: 'password' },
-    { username: 'BooleanBoss', email: 'boolean@example.com', password: 'password' },
-    { username: 'JavascriptJunkie', email: 'js@example.com', password: 'password' },
+    { username: 'SyntaxSlayer', password: 'password' },
+    { username: 'DebugDemon', password: 'password' },
+    { username: 'RootReaper', password: 'password' },
+    { username: 'BooleanBoss', password: 'password' },
+    { username: 'JavascriptJunkie', password: 'password' },
   ], { individualHooks: true });
 };
 
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
+

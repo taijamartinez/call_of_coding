@@ -4,8 +4,7 @@ import bcrypt from 'bcrypt';
 interface UserAttributes {
   id: number;
   username: string;
-  password: string;
-  email?: string; 
+  password: string; 
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
@@ -17,7 +16,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-  email?: any;
+  
 
   // Hash the password before saving the user
   public async setPassword(password: string) {
@@ -43,10 +42,6 @@ export function initUserModel(sequelize: Sequelize): typeof User {
         allowNull: false,
         unique: true,
       },
-      //email: { 
-       // type: DataTypes.STRING, 
-       // allowNull: false, 
-       // unique: true },
         password: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -69,4 +64,4 @@ export function initUserModel(sequelize: Sequelize): typeof User {
   return User;
 }
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
+
