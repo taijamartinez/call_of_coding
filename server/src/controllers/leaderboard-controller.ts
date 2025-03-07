@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Leaderboard, User, Games } from '../models/index.js';
 
 
-// 🔹 GET /leaderboard - Get all leaderboard scores
+// GET /leaderboard - Get all leaderboard scores
 export const getAllScores = async (_unusedReq: Request, res: Response) => {
   try {
     const scores = await Leaderboard.findAll({
@@ -18,7 +18,7 @@ export const getAllScores = async (_unusedReq: Request, res: Response) => {
   }
 };
 
-// 🔹 GET /leaderboard/:id - Get a specific leaderboard entry by ID
+// GET /leaderboard/:id - Get a specific leaderboard entry by ID
 export const getLeaderboardEntryById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -40,7 +40,7 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
   }
 };
 
-// 🔹 POST /leaderboard - Create a new leaderboard entry
+// POST /leaderboard - Create a new leaderboard entry
 export const createLeaderboardEntry = async (req: Request, res: Response) => {
   const { score, userId, gamesId } = req.body;
 
@@ -69,7 +69,7 @@ export const createLeaderboardEntry = async (req: Request, res: Response) => {
   }
 };
 
-// 🔹 PUT /leaderboard/:id - Update a leaderboard entry
+// PUT /leaderboard/:id - Update a leaderboard entry
 export const updateLeaderboardEntry = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { score, userId, gamesId } = req.body;
@@ -110,7 +110,7 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
   }
 };
 
-// 🔹 DELETE /leaderboard/:id - Delete a leaderboard entry
+// DELETE /leaderboard/:id - Delete a leaderboard entry
 export const deleteLeaderboardEntry = async (req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -128,4 +128,4 @@ export const deleteLeaderboardEntry = async (req: Request, res: Response) => {
   }
 };
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
+

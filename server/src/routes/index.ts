@@ -10,4 +10,3 @@ router.use('/api', authenticateToken, apiRoutes);
 
 export default router;
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

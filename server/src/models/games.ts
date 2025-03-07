@@ -59,5 +59,5 @@ export function initGameModel(sequelize: Sequelize): typeof Games {
   return Games;
 }
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
+
 

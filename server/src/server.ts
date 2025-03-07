@@ -30,4 +30,3 @@ sequelize.sync({force: forceDatabaseRefresh}).then(() => {
   });
 });
 
-//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
