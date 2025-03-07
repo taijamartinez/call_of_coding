@@ -12,7 +12,7 @@ const games = [
     title: "Fix Broken Function",
     description: "Find and repair the missing function in the code before time runs out!",
     image: fixBrokenFunctionImg,
-    link: "/play-fix-broken-function"
+    link: "fix-broken-function"
     
   },
   {
@@ -48,7 +48,7 @@ const GameDashboardPage = () => {
               <p className="game-description">{game.description}</p>
               </div>
               <div className="game-button-container">
-              <Link to={game.link} className="play-button">Play</Link>
+              <Link to={`/game/${game.link}`} className="play-button">Play</Link>
             </div>
           </div>
         ))}
