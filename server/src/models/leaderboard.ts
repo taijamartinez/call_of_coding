@@ -6,7 +6,7 @@ import { DataTypes, Sequelize, Model } from 'sequelize';
 
 class Leaderboard extends Model {
   public id!: number;
-  public username!: string; 
+  //public username!: string; 
   public score!: number;
   public userId!: number; 
   public gamesId!: number; 
@@ -21,10 +21,10 @@ Leaderboard.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
+    /*username: {
       type: DataTypes.STRING,
       allowNull: false, //change to true if not required.
-    },
+    },*/
     score: {
       type: DataTypes.INTEGER,
       allowNull: false, 
