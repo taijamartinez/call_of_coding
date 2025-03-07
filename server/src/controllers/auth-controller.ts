@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express';
 import { User } from '../models/index.js';
-import validator from 'validator';
+//import validator from 'validator';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
@@ -10,30 +10,29 @@ dotenv.config(); // Load environment variables
 const secretKey = process.env.JWT_SECRET_KEY as string; // Ensure it's set
 
 export const registerUser = async (req: Request, res: Response): Promise<void> => {
-  const { username, password, email } = req.body;
+  const { username, password } = req.body;
 
   try {
-    if (!username || !password || !email) {
+    if (!username || !password ) {
       res.status(400).json({ status: 'error', message: 'Missing required fields' });
       return;
     }
 
-    if (!validator.isEmail(email)) {
-      res.status(400).json({ status: 'error', message: 'Invalid email format' });
-      return;
-    }
+    // if (!validator.isEmail(email)) {
+    //   res.status(400).json({ status: 'error', message: 'Invalid email format' });
+    //   return;
+    // }
 
-    const existingUser = await User.findOne({ where: { email } });
-    if (existingUser) {
-      res.status(409).json({ status: 'error', message: 'Email already in use' });
-      return;
-    }
+    //  const existingUser = await User.findOne({ where: { email } });
+    // if (existingUser) {
+    //   res.status(409).json({ status: 'error', message: 'Email already in use' });
+    //   return;
+    // }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
       username,
-      email,
       password: hashedPassword,
     });
 
@@ -45,7 +44,6 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
       user: {
         id: newUser.id,
         username: newUser.username,
-        email: newUser.email,
       },
       token, // Return the token after successful user creation
     });
@@ -56,12 +54,12 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 };
 
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
-  const { email, password } = req.body;
+  const { password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne();
     if (!user) {
-      res.status(401).json({ status: 'error', message: 'Invalid email or password' });
+      
       return;
     }
 
@@ -79,7 +77,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
       user: {
         id: user.id,
         username: user.username,
-        email: user.email,
+       
       },
       token, // Return token on successful login
     });
