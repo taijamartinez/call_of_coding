@@ -19,19 +19,19 @@ const games = [
     title: "Bug Buster",
     description: "Hunt down and squash all the bugs hiding in the program.",
     image: bugBusterImg,
-    link: "/play-bug-buster"
+    link: "bug-buster"
   },
   {
     title: "Code Quest",
     description: "Solve a series of coding challenges to advance through the quest.",
     image: codeQuestImg,
-    link: "/play-code-quest"
+    link: "code-quest"
   },
   {
     title: "Code Rush",
     description: "Complete as many coding puzzles as possible before time expires!",
     image: codeRushImg,
-    link: "/play-code-rush"
+    link: "code-rush"
   },
 ];
 
