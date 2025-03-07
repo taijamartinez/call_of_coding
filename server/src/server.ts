@@ -29,3 +29,5 @@ sequelize.sync({force: forceDatabaseRefresh}).then(() => {
     console.log(`Server is listening on port ${PORT}`);
   });
 });
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

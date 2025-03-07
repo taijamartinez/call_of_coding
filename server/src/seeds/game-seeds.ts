@@ -8,3 +8,5 @@ export const seedGames = async () => {
     { title: 'Algorithm Arena', description: 'Compete in algorithm challenges', image: '#', link: '#', id: 4 },
   ]);
 };
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN

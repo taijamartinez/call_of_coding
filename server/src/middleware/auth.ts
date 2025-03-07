@@ -48,3 +48,5 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return res.status(500).json({ status: 'error', message: "An error occurred while verifying the token." });
   }
 };
+
+//TAIJA- COMMENT TO GET MY FILES BACK TO MAIN
