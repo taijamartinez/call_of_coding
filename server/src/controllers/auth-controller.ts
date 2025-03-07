@@ -56,18 +56,18 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
 };
 
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { username } });
     if (!user) {
-      res.status(401).json({ status: 'error', message: 'Invalid email or password' });
+      res.status(401).json({ status: 'error', message: 'Invalid username or password' });
       return;
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      res.status(401).json({ status: 'error', message: 'Invalid email or password' });
+      res.status(401).json({ status: 'error', message: 'Invalid username or password' });
       return;
     }
 
