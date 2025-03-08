@@ -1,0 +1,81 @@
+
+  /* DRAG & DROP ZONES */
+
+/* Drag & Drop Main Container */
+.drag-drop-container {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00eaff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 60%;
+    margin: 1.5rem auto;
+    box-shadow: 0 0 15px rgb(0, 255, 213);
+    text-align: center;
+  }
+
+  /* QUESTION TEXT */
+  
+  /* Question Header */
+  /* .drag-drop-container h2 {
+    font-size: 1.5rem;
+    color: #39ff14;
+    text-shadow: 0 0 5px #264a20;
+    margin-bottom: 1rem;
+  } */
+
+  
+  /* ANSWER OPTIONS */
+  
+  /* Options Container */
+  .options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Draggable Answer Options */
+  .draggable-option {
+    background: linear-gradient(135deg, #768177b1, #ecebebb0);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 5px;
+    text-shadow: 0 0 5px #fff;
+    cursor: grab;
+    font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .draggable-option:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00eaff;
+  }
+  
+  /* Drop Zone */
+  .drop-zone {
+    border: 2px dashed #ff0000;
+    padding: 20px;
+    width: 60%;
+    min-height: 50px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 0 0 5px white;
+    margin: 10px auto;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  /* Drop Zone - When Dragging Over */
+  .drop-zone.drag-over {
+    border-color: #ff007f;
+    background: rgba(255, 0, 127, 0.2);
+  }
+  
+  /* Selected Answer */
+  .drop-zone p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: white;
+    text-shadow: 0 0 5px white;
+  }

@@ -1,7 +1,8 @@
-* Active Game Page Styles */
+/*  Active Game Page Styles */
 .active-game-container {
-    background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e);
+    background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e); 
     /* color: #00eaff; */
+    /* background: url('../../assets/Game1BG.jpg'); */
     text-align: center;
     padding: 2rem;
     min-height: 100vh;
@@ -15,160 +16,39 @@
   
   /* Game Title */
   .active-game-container h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
     animation: flicker 1.5s infinite alternate;
+    font-family: "Bungee Hairline", "DM Sans", sans-serif;;
   }
   
-  /* Story Description */
-  .story-description {
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid #00eaff;
-    padding: 1.5rem;
-    width: 60%;
-    border-radius: 10px;
-    text-shadow: 0 0 5px #00eaff;
-    box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .story-description:hover {
-    transform: scale(1.05);
-  }
 
-  .story-container{
-    color:white;
-  }
-
-  /* TIMER AND POINTS  */
-
-  /* Timer */
-  .timer {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff0000;
-    text-shadow: 0 0 10px #ff0000;
-    padding: 10px;
-    border-radius: 5px;
-    border:rgba(0, 0, 0, 0.728) solid;
-    background-color: #232323f7;
-  }
-  
-  /* Score Tracker */
-  .point-tracker {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #39ff14;
-    text-shadow: 0 0 10px #39ff14;
-    padding: 10px;
-    border-radius: 5px;
-    border:rgba(0, 0, 0, 0.8) solid;
-    background-color: #232323f7;
-  }
-  
-  .game-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+.active-game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 20px; 
+  width: 100%;
+  position: absolute; 
+  top: 0; 
+  left: 0;
 }
 
-.game-title {
-  position: absolute; /* Keeps it at the top */
-  top: 10px; /* Adjust spacing from the top */
+
+.active-game-title {
+  /* position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* Centers the text horizontally */
-  width: 100%; /* Ensures it spans the full width */
-  text-align: center;
-  font-family: "Bungee Hairline", "DM Sans", sans-serif;
+  transform: translateX(-50%); 
+  top: 10px;
+  font-size: 3rem; 
   color: #00ff00;
-  font-size: 4rem; /* Adjust size to fit on one line */
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Ensures no overflow issues */
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap; */
 }
-  
-  /* Drag & Drop Main Container */
-.drag-drop-container {
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #39ff14;
-    padding: 1.5rem;
-    border-radius: 10px;
-    width: 60%;
-    margin: 1.5rem auto;
-    box-shadow: 0 0 15px rgb(0, 255, 42);
-    text-align: center;
-  }
 
-  /* QUESTION TEXT */
-  
-  /* Question Header */
-  .drag-drop-container h2 {
-    font-size: 1.5rem;
-    color: #39ff14;
-    text-shadow: 0 0 5px #264a20;
-    margin-bottom: 1rem;
-  }
-
-  /* ANSWER OPTIONS */
-  
-  /* Options Container */
-  .options-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
-  
-  /* Draggable Answer Options */
-  .draggable-option {
-    background: linear-gradient(135deg, #768177b1, #ecebebb0);
-    color: #fff;
-    padding: 12px 15px;
-    border-radius: 5px;
-    text-shadow: 0 0 5px #fff;
-    cursor: grab;
-    font-weight: bold;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-
-  /* DRAG & DROP ZONES */
-  .draggable-option:active {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #00eaff;
-  }
-  
-  /* Drop Zone */
-  .drop-zone {
-    border: 2px dashed #ff0000;
-    padding: 20px;
-    width: 60%;
-    min-height: 50px;
-    text-align: center;
-    font-size: 1.2rem;
-    color: white;
-    text-shadow: 0 0 5px white;
-    margin: 10px auto;
-    transition: border-color 0.3s ease-in-out;
-  }
-  
-  /* Drop Zone - When Dragging Over */
-  .drop-zone.drag-over {
-    border-color: #ff007f;
-    background: rgba(255, 0, 127, 0.2);
-  }
-  
-  /* Selected Answer */
-  .drop-zone p {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: white;
-    text-shadow: 0 0 5px white;
-  }
   
   /* Flickering Animation for game title*/
   @keyframes flicker {
