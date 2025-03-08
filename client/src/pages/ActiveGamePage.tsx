@@ -7,6 +7,8 @@ import Timer from "../components/Timer";
 import PointTracker from "../components/PointTracker";
 import { useGame } from "../contexts/gamecontext"
 
+import "./css/ActiveGamePage.css";
+
 
 const ActiveGamePage: React.FC = () => {
 
@@ -20,17 +22,27 @@ if (!game) {
 
     return (
         <div className="active-game-container">
+
+          <div className="active-game-header">
+
+          <div className="active-game-timer">
+          {/* timer component */}
+          <Timer time={time} />
+          </div>
+
           {/* game title */}
-          <h1>{game.title}</h1>
+          <h1 className="active-game-title">{game.title}</h1>
+
+
+          <div className="active-game-points">
+          {/* Point Tracker Component */}
+          <PointTracker score={score} />
+          </div>
+
+          </div>
           
           {/* story description */}
           <StoryDescription story={game.story} />
-
-          {/* timer component */}
-          <Timer time={time} />
-
-          {/* Point Tracker Component */}
-          <PointTracker score={score} />
 
           {/* Drag and Drop Component for Coding Challenges */}
           <DragDrop 
@@ -41,4 +53,5 @@ if (!game) {
         </div>
       );
     };
+
 export default ActiveGamePage;

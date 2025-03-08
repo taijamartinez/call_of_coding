@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./css/DragDrop.css";
+
 interface DragDropProps {
     question: {
         text: string;
@@ -28,6 +30,20 @@ const DragDrop: React.FC<DragDropProps> = ({ question, onCorrectAnswer }) => {
     return(
         <div className="drag-drop-container">
       <h2>{question.text}</h2>
+      
+
+      <div
+        className="drop-zone"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          const droppedAnswer = e.dataTransfer.getData("text/plain");
+          handleDrop(droppedAnswer);
+        }}
+      >
+        <p>Drop your answer here</p>
+        
+      </div>
+
       <div className="options-container">
         {question.options.map((option, index) => (
           <div
@@ -39,18 +55,6 @@ const DragDrop: React.FC<DragDropProps> = ({ question, onCorrectAnswer }) => {
             {option}
           </div>
         ))}
-      </div>
-
-      <div
-        className="drop-zone"
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={(e) => {
-          const droppedAnswer = e.dataTransfer.getData("text/plain");
-          handleDrop(droppedAnswer);
-        }}
-      >
-        <p>Drop your answer here</p>
-        {selectedAnswer && <p>Selected: {selectedAnswer}</p>}
       </div>
     </div>
   );
