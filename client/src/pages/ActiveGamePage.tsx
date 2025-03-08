@@ -20,17 +20,28 @@ if (!game) {
 
     return (
         <div className="active-game-container">
+
+          <div>
+
+          {/* timer component */}
+          <Timer time={time} />
+
           {/* game title */}
           <h1>{game.title}</h1>
+
+          {/* Point Tracker Component */}
+          <PointTracker score={score} />
+
+          </div>
           
           {/* story description */}
           <StoryDescription story={game.story} />
 
           {/* timer component */}
-          <Timer time={time} />
+          {/* <Timer time={time} /> */}
 
           {/* Point Tracker Component */}
-          <PointTracker score={score} />
+          {/* <PointTracker score={score} /> */}
 
           {/* Drag and Drop Component for Coding Challenges */}
           <DragDrop 

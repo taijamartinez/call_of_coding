@@ -2,8 +2,8 @@
 
 export const gameData = [
     {
-        id: "fix-broken-function",
-        title: "Fix Broken Function",
+        id: "hack-the-matrix",
+        title: "Hack the Matrix",
         story: "A secret agency has tasked you with cracking an encrypted code to retrieve stolen data before it’s too late.",
         questions: [
           {
@@ -15,6 +15,23 @@ export const gameData = [
             text: "Which method converts JSON into a JavaScript object?",
             options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()"],
             correctAnswer: "JSON.parse()",
+          },
+        ],
+      },
+      {
+        id: "glitch-wars",
+        title: "Glitch Wars",
+        story: "You've entered a mysterious coding tournament. Solve the challenges to claim victory!",
+        questions: [
+          {
+            text: "Which data structure follows the First In, First Out (FIFO) principle?",
+            options: ["Stack", "Queue", "Linked List"],
+            correctAnswer: "Queue",
+          },
+          {
+            text: "Which sorting algorithm has an average time complexity of O(n log n)?",
+            options: ["Bubble Sort", "Quick Sort", "Insertion Sort"],
+            correctAnswer: "Quick Sort",
           },
         ],
       },
@@ -53,8 +70,8 @@ export const gameData = [
         ],
       },
       {
-        id: "cursed-codebase",
-        title: "Cursed Codebase Escape",
+        id: "ctrl-alt-defeat",
+        title: "Ctrl+Alt+Defeat",
         story: "A rogue developer left behind a cursed infinite loop. Find and fix the issue before it consumes all system memory!",
         questions: [
           {
