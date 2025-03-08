@@ -16,4 +16,6 @@
 
   .story-container{
     color:white;
+    background-color: blue;
+    padding: 20px;
   }

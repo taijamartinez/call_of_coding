@@ -23,7 +23,7 @@ if (!game) {
     return (
         <div className="active-game-container">
 
-          <div className="acive-game-header">
+          <div className="active-game-header">
 
           <div className="active-game-timer">
           {/* timer component */}
