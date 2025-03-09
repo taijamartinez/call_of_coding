@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Leaderboard } from "../../models/index.js";
-import { createLeaderboardEntry, getLeaderboardEntryById } from "../../controllers/leaderboard-controller";
+import { createLeaderboardEntry, getLeaderboardEntryById } from "../../controllers/leaderboard-controller.js";
 
 
 const leaderboardRouter = Router();
