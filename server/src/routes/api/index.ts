@@ -1,16 +1,18 @@
 import { Router } from 'express';
-// import leaderboardRoutes from './leaderboard-routes.js';
-// import userRoutes from './user-routes';
-//import authRoutes from './ auth-routes.js';
-//import { authenticateToken } from '../../middleware/auth-middleware.js';
+import { leaderboardRouter } from './leaderboard-routes.js';
+import { userRouter } from './user-routes.js';
+import { gameRouter } from './game-routes.js';
+import authRoutes from '../auth-routes.js';
+import { authenticateToken } from '../../middleware/auth.js';
 
-const router = Router();
+const apiRouter = Router();
 
-// router.use('/auth', authRoutes); // Handles authentication-related API calls
-// router.use('/leaderboard', leaderboardRoutes); // Handles leaderboard-related API calls
-// router.use('/users', userRoutes); // Handles user-related API calls
+apiRouter.use('/auth', authRoutes); // Handles authentication-related API calls
+apiRouter.use('/leaderboard', authenticateToken, leaderboardRouter); // Handles/protects leaderboard-related API calls
+apiRouter.use('/users', authenticateToken, userRouter); // Handles/protects user-related API calls
+apiRouter.use('/games', gameRouter); // Handles game-related API calls
 
-export default router;
+export default apiRouter;
 
 
 
