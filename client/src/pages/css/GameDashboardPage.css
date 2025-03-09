@@ -5,6 +5,9 @@
   justify-content: center;
   padding: 20px;
   background-color: #003300; /* Dark green background */
+  background-image: url("../assets/game-dashboard-bg.png");
+  background-size: cover; 
+
 }
 
 .game-dashboard h1 {
