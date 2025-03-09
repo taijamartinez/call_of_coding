@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import GameDashboardPage from './pages/GameDashboardPage.tsx';
 import LeaderboardPage from './pages/LeaderboardPage.js';
 import Login from './pages/Login.tsx';
+import GameCompletion from './pages/GameCompletion.tsx';
 import auth from './utils/auth';
 
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/game/:gameId', 
         element: <ProtectedRoute element={<ActiveGamePage />} />,
+      },
+      {
+        path: '/game-completion',
+        element: <ProtectedRoute element={<GameCompletion />} />,
       },
       {
         path: '/leaderboard',

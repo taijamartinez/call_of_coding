@@ -1,0 +1,44 @@
+.game-completion-container {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(to bottom, #0f0f1e, #1a1a2e);
+    color: #00eaff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+  }
+  
+  h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 10px #00eaff;
+    animation: flicker 1.5s infinite alternate;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #00eaff;
+    color: #1a1a2e;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #0088aa;
+  }
+  
+  /* Cool Flicker Animation */
+  @keyframes flicker {
+    0% { opacity: 0.8; text-shadow: 0 0 5px #00eaff; }
+    100% { opacity: 1; text-shadow: 0 0 15px #00eaff; }
+  }
