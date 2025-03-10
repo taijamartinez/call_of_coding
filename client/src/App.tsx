@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import { GameProvider } from "./contexts/gamecontext";
 
 function App() {
@@ -7,10 +7,10 @@ function App() {
   return (
     <GameProvider>
     <div className='container'>
-      <Navbar />
-      <main>
+      {/* <Navbar /> */}
+      {/* <main> */}
         <Outlet />
-      </main>
+      {/* </main> */}
     </div>
     </GameProvider>
   );

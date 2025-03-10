@@ -6,6 +6,7 @@ import StoryDescription from "../components/StoryDescription";
 import Timer from "../components/Timer";
 import PointTracker from "../components/PointTracker";
 import { useGame } from "../contexts/gamecontext"
+import ExitGame from "../components/ExitGame";
 import "./css/ActiveGamePage.css";
 import { addScore, Score } from "../api/scoreAPI";
 import Auth from "../utils/auth";
@@ -72,6 +73,10 @@ useEffect(() => {
           {currentQuestionIndex < game.questions.length && (
             <DragDrop question={game.questions[currentQuestionIndex]} onCorrectAnswer={handleCorrectAnswer} />
        )}
+       
+       {/* Exit Game Component */} 
+        <ExitGame/>
+
     </div>
   );
 };
