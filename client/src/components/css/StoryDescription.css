@@ -16,6 +16,16 @@
 
   .story-container{
     color:white;
-    background-color: blue;
+    background-color:blue;
     padding: 20px;
+    width: 90%;
   }
+
+  h2{
+    font-size: 1.6rem;
+    color: white;
+  }
+
+ .story-text{
+    font-size: .9rem;
+ }

@@ -10,19 +10,37 @@ interface GameContextType {
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
+const readLs = (key: string) => JSON.parse(localStorage.getItem(key) || "0");
+
+const writeLs = (key: string, value: number) => localStorage.setItem (key, JSON.stringify(value));
+
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [score, setScore] = useState(0);
-    const [time, setTime] = useState(0);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(readLs("score"));
+    const [time, setTime] = useState(readLs("time"));
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(readLs("currentQuestionIndex"));
 
     useEffect(() => {
-        const timer = setInterval(() => setTime((prevTime) => prevTime + 1), 1000);
+        const timer = setInterval(() => setTime((prevTime: number) => prevTime + 1), 1000);
         return () => clearInterval(timer);
     }, []);
 
+    useEffect(() => {
+        writeLs("score", score);
+    }, [score]);
+
+    useEffect(() => {
+        writeLs("time", time);
+    }, [time]);
+
+    useEffect(() => {
+        writeLs("currentQuestionIndex", currentQuestionIndex);
+    }, [currentQuestionIndex]);
+    
+
+
     const handleCorrectAnswer = () => {
-        setScore((prev) => prev + 10);
-        setCurrentQuestionIndex((prev) => prev + 1);
+        setScore((prev: number) => prev + 10);
+        setCurrentQuestionIndex((prev: number) => prev + 1);
     };
 
     const resetGame = () => {
