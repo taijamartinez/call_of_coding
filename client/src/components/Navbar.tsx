@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import auth from "../utils/auth";
-import "./css/Navbar.css"; // Import the CSS file
+import "./css/Navbar.css"; 
 
 const Navbar = () => {
   const [loginCheck, setLoginCheck] = useState(false);
