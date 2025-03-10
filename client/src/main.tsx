@@ -9,6 +9,7 @@ import LeaderboardPage from './pages/LeaderboardPage.js';
 import Login from './pages/Login.tsx';
 import GameCompletion from './pages/GameCompletion.tsx';
 import auth from './utils/auth';
+import NavFooterWrapper from './components/NavFooterWrapper.tsx';
 
 const ProtectedRoute = ({ element }: { element: JSX.Element }) => {
   return auth.loggedIn() ? element : <Navigate to="/login" />;
@@ -18,7 +19,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
+    errorElement: <NavFooterWrapper>
+      
+      <ErrorPage />
+    </NavFooterWrapper>,
     children: [
       {
         index: true,
@@ -30,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <ProtectedRoute element={<GameDashboardPage />} />
+        element: <NavFooterWrapper> <ProtectedRoute element={<GameDashboardPage />} /> </NavFooterWrapper>
       },
       {
         path: '/active-game',
@@ -46,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/leaderboard',
-        element: <ProtectedRoute element={<LeaderboardPage />} />
+        element: <NavFooterWrapper> <ProtectedRoute element={<LeaderboardPage />} /> </NavFooterWrapper> 
       },
     ],
   },

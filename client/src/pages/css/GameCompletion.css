@@ -2,43 +2,60 @@
     text-align: center;
     padding: 50px;
     background: linear-gradient(to bottom, #0f0f1e, #1a1a2e);
-    color: #00eaff;
+    color: #39ff14;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 8, 0.5);
+    font-family: "Doto", "DM Sans", sans-serif;;
+  }
+
+  .game-stat-container{
+    border: solid #000000;
+    background-color: #05051b;
+    border-radius: 3%;
+    padding: 40px;
+    width: 50%;
   }
   
   h1 {
-    font-size: 3rem;
-    text-shadow: 0 0 10px #00eaff;
+    font-size: 4rem;
+    text-shadow: 0 0 10px #00ff2a;
     animation: flicker 1.5s infinite alternate;
   }
   
   p {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin: 10px 0;
   }
   
-  button {
-    background-color: #00eaff;
-    color: #1a1a2e;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-  }
-  
-  button:hover {
-    background-color: #0088aa;
-  }
+ 
+button {
+  background-color: #00ff00;
+  color: #003300;
+  font-size: 1.4rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+  margin-top: 30px;
+  font-family: Victor Mono, "DM Sans", sans-serif;
+}
+
+button:hover {
+  background-color: #00cc00;
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
+  transform: scale(1.05);
+}
   
   /* Cool Flicker Animation */
   @keyframes flicker {
-    0% { opacity: 0.8; text-shadow: 0 0 5px #00eaff; }
-    100% { opacity: 1; text-shadow: 0 0 15px #00eaff; }
+    0% { opacity: 0.8; text-shadow: 0 0 5px #39ff14; }
+    100% { opacity: 1; text-shadow: 0 0 15px #39ff14; }
   }

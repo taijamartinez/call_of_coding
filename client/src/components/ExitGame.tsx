@@ -1,8 +1,45 @@
 import { Link } from "react-router-dom";
 import "./css/ExitGame.css"; 
-const ExitGame = ({ onResume }: { onResume: () => void }) => {
+import Modal from 'react-modal';
+import { useState } from "react";
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
+const ExitGame = () => {
+    // let subtitle;
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+        setIsOpen(true);
+      }
+    
+      // function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+    //     subtitle.style.color = '#f00';
+    //   }
+    
+      function closeModal() {
+        setIsOpen(false);
+      }
     return (
+
       <div className="exit-game-overlay">
+        <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
         <div className="exit-game-modal">
           <h2>Exit Game</h2>
           <p className="exit-warning">
@@ -11,12 +48,14 @@ const ExitGame = ({ onResume }: { onResume: () => void }) => {
             Sure you want to exit?
           </p>
           <div className="exit-buttons">
-            <button className="exit-button resume-btn" onClick={onResume}>
+            <button className="exit-button resume-btn" onClick={closeModal}>
               Resume Game
             </button>
-            <Link to="/" className="exit-button exit-btn">Exit Game</Link>
+            <Link to="/dashboard" className="exit-button exit-btn">Exit Game</Link>
           </div>
         </div>
+      </Modal>
+        
       </div>
     );
   };
