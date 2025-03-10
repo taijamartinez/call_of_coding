@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./css/GameDashboardPage.css";
+import backgroundImage from "../assets/game-dashboard-bg.png";
 
 // Importing game images
 import fixBrokenFunctionImg from "../assets/fix-broken-function.png";
@@ -44,7 +45,8 @@ const games = [
 
 const GameDashboardPage = () => {
   return (
-    <div className="game-dashboard">
+    <div className="game-dashboard"
+      style={{ backgroundImage: `url(${backgroundImage})` }}>
       <h1 className="dashboard-title">Select a Game!</h1>
       <div className="game-list">
         {games.map((game, index) => (
