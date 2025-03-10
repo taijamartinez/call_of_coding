@@ -9,6 +9,5 @@
     border:rgba(0, 0, 0, 0.8) solid;
     background-color: #232323f7;
     position: absolute;
-    right: 20px; /* Moves points to the right */
-    top: 60px;
+    right: 20px; 
   }
