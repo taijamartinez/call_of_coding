@@ -24,4 +24,8 @@ router.put('/:id', updateUser);
 // DELETE /users/:id - Delete a user by id
 router.delete('/:id', deleteUser);
 
+
 export { router as userRouter };
+
+
+

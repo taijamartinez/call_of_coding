@@ -59,3 +59,5 @@ export function initGameModel(sequelize: Sequelize): typeof Games {
   return Games;
 }
 
+
+

@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { Leaderboard } from "../../models/index.js";
-import { createTicket, getTicketById } from "../../controllers/leaderboard-controller";
+import { createLeaderboardEntry, getLeaderboardEntryById } from "../../controllers/leaderboard-controller.js";
 
 
 const leaderboardRouter = Router();
@@ -20,9 +20,13 @@ leaderboardRouter.get('/', async (_req: Request, res: Response) => {
 });
 
 // GET a leaderboard by ID
-leaderboardRouter.get('/:id', getTicketById);
+leaderboardRouter.get('/:id',getLeaderboardEntryById );
 
 // POST create a new leaderboard
-leaderboardRouter.post('/', createTicket);
+leaderboardRouter.post('/', createLeaderboardEntry);
+
 
 export { leaderboardRouter };
+
+
+

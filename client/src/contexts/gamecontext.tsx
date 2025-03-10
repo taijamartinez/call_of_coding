@@ -5,6 +5,7 @@ interface GameContextType {
     time: number;
     currentQuestionIndex: number;
     handleCorrectAnswer: () =>void;
+    resetGame: () => void;
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -24,8 +25,14 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setCurrentQuestionIndex((prev) => prev + 1);
     };
 
+    const resetGame = () => {
+        setScore(0);
+        setTime(0);
+        setCurrentQuestionIndex(0);
+    };
+
     return (
-        <GameContext.Provider value={{ score, time, currentQuestionIndex, handleCorrectAnswer }}>
+        <GameContext.Provider value={{ score, time, currentQuestionIndex, handleCorrectAnswer, resetGame }}>
         {children}
         </GameContext.Provider>
     );

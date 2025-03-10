@@ -1,0 +1,21 @@
+/* Story Description */
+.story-description {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00eaff;
+    padding: 1.5rem;
+    width: 60%;
+    border-radius: 10px;
+    text-shadow: 0 0 5px #00eaff;
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.3);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .story-description:hover {
+    transform: scale(1.05);
+  }
+
+  .story-container{
+    color:white;
+    background-color: blue;
+    padding: 20px;
+  }

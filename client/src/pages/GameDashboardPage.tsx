@@ -10,29 +10,40 @@ import codeRushImg from "../assets/code-rush.png";
 
 const games = [
   {
-    title: "Fix Broken Function",
-    description: "Find and repair the missing function in the code before time runs out!",
+    title: "Hack the Matrix",
+    description: "Prove your hacking skills in this high-stakes cyber challenge! Crack encrypted codes, bypass firewalls, and decrypt hidden messages to uncover the truth behind the Matrix.",
     image: fixBrokenFunctionImg,
-    link: "fix-broken-function"
+    link: "hack-the-matrix"
+    
+  },
+  {
+    title: "Glitch Wars",
+    description: "The system is unstable, and glitches are taking over! Battle rogue code, patch corrupted files, and restore order before the digital world collapses.",
+    image: fixBrokenFunctionImg,
+    link: "glitch-wars"
     
   },
   {
     title: "Bug Buster",
-    description: "Hunt down and squash all the bugs hiding in the program.",
+    description: "Hunt down and eliminate pesky bugs lurking in the code. Debug, refactor, and optimize your way to a flawless program before time runs out!",
     image: bugBusterImg,
     link: "bug-buster"
   },
   {
     title: "Code Quest",
-    description: "Solve a series of coding challenges to advance through the quest.",
+    description: "Embark on an epic coding adventure! Level up your programming skills to complete the quest.",
     image: codeQuestImg,
     link: "code-quest"
   },
   {
-    title: "Code Rush",
-    description: "Complete as many coding puzzles as possible before time expires!",
+    title: "Ctrl+Alt+Defeat",
+    description: "The ultimate coding showdown! Solve as many programming challenges as possible before your system crashes.",
     image: codeRushImg,
+<<<<<<< HEAD
     link: "code-rush"
+=======
+    link: "ctrl-alt-defeat"
+>>>>>>> f1e4dabcb93d5bb85d498972f5a22864e450a679
   },
 ];
 
