@@ -39,11 +39,7 @@ const games = [
     title: "Ctrl+Alt+Defeat",
     description: "The ultimate coding showdown! Solve as many programming challenges as possible before your system crashes.",
     image: codeRushImg,
-<<<<<<< HEAD
-    link: "code-rush"
-=======
     link: "ctrl-alt-defeat"
->>>>>>> f1e4dabcb93d5bb85d498972f5a22864e450a679
   },
 ];
 
