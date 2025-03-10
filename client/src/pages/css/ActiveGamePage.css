@@ -1,5 +1,5 @@
 /*  Active Game Page Styles */
-.active-game-container {
+/* .active-game-container {
     background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e); 
     text-align: center;
     padding: 2rem;
@@ -46,16 +46,82 @@
 .active-game-points {
   flex: 1; 
   text-align: center;
-}
+} */
 
   
   /* Flickering Animation for game title*/
-  @keyframes flicker {
+  /* @keyframes flicker {
     0% { opacity: 0.8; text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff; }
     100% { opacity: 1; text-shadow: 0 0 15px #00eaff, 0 0 25px #00eaff; }
-  }
+  } */
   
   /* Glowing Hover Effect */
-  .glow:hover {
+  /* .glow:hover {
     box-shadow: 0 0 20px rgba(0, 234, 255, 0.8);
-  }
+  } */
+
+/* Active Game Page Styles */
+.active-game-container {
+  background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e);
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+  height: 100vh;
+}
+
+.active-game-container h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+  animation: flicker 1.5s infinite alternate;
+  font-family: "Bungee Hairline", "DM Sans", sans-serif;
+  margin-top: 50px;  /* Added margin to move the title lower */
+}
+
+/* Header container to align timer and points on opposite sides */
+.active-game-header {
+display: flex;
+justify-content: space-between; /* Distribute items to the left and right */
+align-items: center; 
+width: 100%;
+padding: 10px 20px;
+}
+
+.active-game-title {
+white-space: nowrap;
+text-align: center;
+font-size: 1.8rem;
+font-weight: bold;
+padding: 10px;
+}
+
+.active-game-timer,
+.active-game-title,
+.active-game-points {
+text-align: center;
+}
+
+.active-game-timer {
+margin-left: 0;  /* Ensure it stays on the left side */
+}
+
+.active-game-points {
+margin-right: 0;  /* Ensure it stays on the right side */
+}
+
+/* Flickering Animation for game title */
+@keyframes flicker {
+0% { opacity: 0.8; text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff; }
+100% { opacity: 1; text-shadow: 0 0 15px #00eaff, 0 0 25px #00eaff; }
+}
+
+/* Glowing Hover Effect */
+.glow:hover {
+box-shadow: 0 0 20px rgba(0, 234, 255, 0.8);
+}

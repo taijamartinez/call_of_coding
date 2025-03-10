@@ -8,6 +8,6 @@
     border:rgba(0, 0, 0, 0.8) solid;
     background-color: #232323f7;
     position: absolute;
-    left: 20px; /* Moves timer to the left */
-    top: 60px;
+    left: 20px; 
+    
   }

@@ -10,6 +10,7 @@ const Login = () => {
   });
 
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +55,8 @@ const vimeoVideoUrl = "https://player.vimeo.com/video/1062656659?autoplay=1&loop
       <div className="video-wrapper">
       <iframe
         src={vimeoVideoUrl}
+        onLoad={() => setTimeout(()=>setLoading(false), 1250) }
+        // onCanPlay={()=>setLoading(false)}
         frameBorder="0"
         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
         allowFullScreen
@@ -62,6 +65,8 @@ const vimeoVideoUrl = "https://player.vimeo.com/video/1062656659?autoplay=1&loop
       ></iframe>
     </div>
 
+    { loading? (<h1>LOADING...</h1> ) :(<>
+    
 
       {/* Title and text section */}
 
@@ -102,6 +107,7 @@ const vimeoVideoUrl = "https://player.vimeo.com/video/1062656659?autoplay=1&loop
 
       </form>
       </div>
+      </>)}
     </div>
     
   );
