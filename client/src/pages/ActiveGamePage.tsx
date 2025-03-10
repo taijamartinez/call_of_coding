@@ -6,8 +6,9 @@ import StoryDescription from "../components/StoryDescription";
 import Timer from "../components/Timer";
 import PointTracker from "../components/PointTracker";
 import { useGame } from "../contexts/gamecontext"
-
 import "./css/ActiveGamePage.css";
+import { addScore, Score } from "../api/scoreAPI";
+import Auth from "../utils/auth";
 
 
 const ActiveGamePage: React.FC = () => {
@@ -26,6 +27,15 @@ if (!game) {
 // Navigate to Game Completion when all questions are answered
 useEffect(() => {
   if (currentQuestionIndex >= game.questions.length) {
+    // get score info 
+    const leaderboardEntry: Score = {
+      score: score,
+      // @ts-ignore
+      userId: Auth.getProfile().id,
+      gamesId: Number(game.id),
+    };
+    // send it to the backend
+    addScore(leaderboardEntry);
     navigate(`/game-completion`, { 
       state: { score, time, gameTitle: game.title },
       replace: true,

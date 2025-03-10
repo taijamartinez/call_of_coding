@@ -43,7 +43,7 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
 // POST /leaderboard - Create a new leaderboard entry
 export const createLeaderboardEntry = async (req: Request, res: Response) => {
   const { score, userId, gamesId } = req.body;
-
+ console.log(req.body);
   try {
     // Validate user existence
     const userExists = await User.findByPk(userId);
