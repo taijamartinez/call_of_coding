@@ -3,7 +3,8 @@ import "./css/GameDashboardPage.css";
 import backgroundImage from "../assets/game-dashboard-bg.png";
 
 // Importing game images
-import fixBrokenFunctionImg from "../assets/fix-broken-function.png";
+import fixBrokenFunctionImg from "../assets/GameBG4.jpg";
+import glitchWarsImg from "../assets/GameBG2.jpg";
 import bugBusterImg from "../assets/bug-buster.png";
 import codeQuestImg from "../assets/code-quest.png";
 import codeRushImg from "../assets/code-rush.png";

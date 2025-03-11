@@ -32,6 +32,7 @@
   margin: 0;
   padding: 0;
   gap: 20px;
+  align-items: center;
 }
 
 .nav-item {
@@ -63,6 +64,9 @@
   border-color: #ff0000;
   color: #ff0000;
   text-shadow: 0 0 5px #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout-btn:hover {

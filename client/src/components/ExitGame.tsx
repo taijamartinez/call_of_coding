@@ -35,7 +35,7 @@ const ExitGame = () => {
     return (
 
       <div className="exit-game-overlay">
-        <button onClick={openModal}>Open Modal</button>
+        <button onClick={openModal}>Exit Game</button>
       <Modal
         isOpen={modalIsOpen}
         // onAfterOpen={afterOpenModal}
