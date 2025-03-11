@@ -78,6 +78,7 @@
   background-image: url('../../assets/GameBG7.png');
   animation: moveBackground 60s linear infinite;
   overflow: hidden;
+  z-index: 1;
   
 }
 
