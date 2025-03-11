@@ -1,0 +1,21 @@
+.exit-game-overlay button{
+    position: fixed; /* Change to fixed to ensure it's always visible on the screen */
+    bottom: 20px; /* Adjusted for responsiveness */
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: red;
+    color: #1a1a2e;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10; /* Keep it on top of other elements */
+}
+
+@media screen and (max-width: 768px) {
+    .open-modal-button {
+      bottom: 10px; /* Slight adjustment for smaller screens */
+      right: 15px;
+      font-size: 0.8rem; /* Adjust font size for small screens */
+    }
+  }

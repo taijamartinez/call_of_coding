@@ -3,7 +3,7 @@
 
 /* Drag & Drop Main Container */
 .drag-drop-container {
-    background: rgb(13, 11, 26);
+    background: rgba(21, 20, 20, 0.991);
     border: 2px solid #00ff00;
     padding: 1.5rem;
     border-radius: 10px;
