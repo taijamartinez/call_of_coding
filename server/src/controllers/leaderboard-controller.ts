@@ -42,13 +42,15 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
 
 // POST /leaderboard - Create a new leaderboard entry
 export const createLeaderboardEntry = async (req: Request, res: Response) => {
+
   const { score, userId, gamesId } = req.body;
+
  console.log(req.body);
   try {
     // Validate user existence
-    const userExists = await User.findByPk(userId);
+    const userExists = await User.findByPk(username);
     if (!userExists) {
-      return res.status(400).json({ message: 'Invalid userId. User does not exist.' });
+      return res.status(400).json({ message: 'Invalid username. User does not exist.' });
     }
 
     // Validate game existence
@@ -57,7 +59,7 @@ export const createLeaderboardEntry = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
     }
 
-    const newEntry = await Leaderboard.create({ score, userId, gamesId });
+    const newEntry = await Leaderboard.create({ score, username, gamesId });
 
     return res.status(201).json({
       message: 'Leaderboard entry created successfully',
@@ -72,7 +74,7 @@ export const createLeaderboardEntry = async (req: Request, res: Response) => {
 // PUT /leaderboard/:id - Update a leaderboard entry
 export const updateLeaderboardEntry = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { score, userId, gamesId } = req.body;
+  const { score, username, gamesId } = req.body;
 
   try {
     const entry = await Leaderboard.findByPk(id);
@@ -80,10 +82,10 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Leaderboard entry not found' });
     }
 
-    if (userId) {
-      const userExists = await User.findByPk(userId);
+    if (username) {
+      const userExists = await User.findByPk(username);
       if (!userExists) {
-        return res.status(400).json({ message: 'Invalid userId. User does not exist.' });
+        return res.status(400).json({ message: 'Invalid username. User does not exist.' });
       }
     }
 
@@ -95,7 +97,7 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
     }
 
     entry.score = score || entry.score;
-    entry.userId = userId || entry.userId;
+    entry.username = username || entry.username;
     entry.gamesId = gamesId || entry.gamesId;
 
     await entry.save();

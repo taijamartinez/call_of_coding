@@ -17,8 +17,8 @@ const LeaderboardPage = () => {
   useEffect(() => {
     // Replace this with an API call later 
     const storedLeaderboard: Player[] = [
-      { id: 1, username: "Player1", game: "Code Quest", time: "03:25", points: 150 },
-      { id: 2, username: "Player2", game: "Bug Buster", time: "02:40", points: 200 },
+      // { id: 1, username: "Player1", game: "Code Quest", time: "03:25", points: 150 },
+      // { id: 2, username: "Player2", game: "Bug Buster", time: "02:40", points: 200 },
     ];
     setLeaderboard(storedLeaderboard);
   }, []);

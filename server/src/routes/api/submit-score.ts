@@ -5,6 +5,7 @@ const router = Router();
 
 router.post("/submit", async (_req, _res) => {
   try {
+
     const { userId, gameId, score } = _req.body;
 
     if (!userId || !gameId || !score) {
