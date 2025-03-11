@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
 import "./css/DragDrop.css";
 
+// DragDropProps interface
 interface DragDropProps {
     question: {
         text: string;
@@ -12,25 +12,43 @@ interface DragDropProps {
 }
 
 const DragDrop: React.FC<DragDropProps> = ({ question, onCorrectAnswer }) => {
-    const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  // State to manage the notification
+    const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
+    // Function to handle the drop event
     const handleDrop = (answer: string) => {
-        setSelectedAnswer(answer);
 
+      // if the dropped answer is correct display correct message and moves to the next question
         if(answer === question.correctAnswer) {
+            setNotification({ message: "Correct! ✅", type: "success"});
+
             setTimeout(() => {
-                alert("Correct! ✅");
-                onCorrectAnswer();
-            }, 500);
+              setNotification(null);
+              onCorrectAnswer(); 
+            }, 1500); 
+
         } else {
-            alert("Try again! ❌")
+            setNotification({ message: "Try Again! ✖", type: "error" });
+
+            setTimeout(() => {
+              setNotification(null);
+            }, 1500);
         }
     };
 
     return(
-        <div className="drag-drop-container">
-      <h2>{question.text}</h2>
+    <div className="drag-drop-container">
       
+      <h2>{question.text}</h2>
+    
+       {/* Notification Display */}
+       {notification && (
+        <div className={`notification ${notification.type}`}>
+          {notification.message}
+        </div>
+      )}
+
+      {/* Drop Zone */}
 
       <div
         className="drop-zone"
@@ -44,6 +62,7 @@ const DragDrop: React.FC<DragDropProps> = ({ question, onCorrectAnswer }) => {
         
       </div>
 
+      {/* answer draggable options */}
       <div className="options-container">
         {question.options.map((option, index) => (
           <div
