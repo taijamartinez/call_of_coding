@@ -20,7 +20,7 @@ const games = [
   {
     title: "Glitch Wars",
     description: "The system is unstable, and glitches are taking over! Battle rogue code, patch corrupted files, and restore order before the digital world collapses.",
-    image: fixBrokenFunctionImg,
+    image: glitchWarsImg,
     link: "glitch-wars"
     
   },
