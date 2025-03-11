@@ -16,7 +16,9 @@
 
   .story-container{
     color:white;
-    background-color:blue;
+    background-color:rgb(13, 11, 26);
+    border: solid 2px #ff0000;
+    border-radius: 10px;
     padding: 20px;
     width: 90%;
   }

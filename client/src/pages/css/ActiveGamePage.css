@@ -72,7 +72,28 @@
   justify-content: center;
   box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
   height: 100vh;
+
+  background-size: cover;
+
+  background-image: url('../../assets/GameBG7.png');
+  animation: moveBackground 60s linear infinite;
+  
 }
+
+
+/* @keyframes moveBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+} */
+
+
 
 .active-game-container h1 {
   font-size: 3rem;
@@ -81,7 +102,7 @@
   text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
   animation: flicker 1.5s infinite alternate;
   font-family: "Bungee Hairline", "DM Sans", sans-serif;
-  margin-top: 50px;  /* Added margin to move the title lower */
+  margin-top: 200px;  /* Added margin to move the title lower */
 }
 
 /* Header container to align timer and points on opposite sides */
