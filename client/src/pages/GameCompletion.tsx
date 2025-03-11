@@ -18,14 +18,9 @@ const { gameTitle } = location.state || {};
 
 useEffect(() => {
 
-    console.log("Location State on Load:", location.state);
-
     // Get values from location first, then fallback to localStorage
     const storedScore = location.state?.score ?? JSON.parse(localStorage.getItem("finalScore") || "0");
     const storedTime = location.state?.time ?? JSON.parse(localStorage.getItem("finalTime") || "0");
-
-    console.log("Retrieved Score:", storedScore);
-    console.log("Retrieved Time:", storedTime);
 
     setFinalScore(storedScore);
     setFinalTime(storedTime);
@@ -34,13 +29,11 @@ useEffect(() => {
     localStorage.setItem("finalScore", JSON.stringify(storedScore));
     localStorage.setItem("finalTime", JSON.stringify(storedTime));
 
-    console.log("Saved to localStorage - Score:", localStorage.getItem("finalScore"));
-    console.log("Saved to localStorage - Time:", localStorage.getItem("finalTime"));
   }, [location.state]);
 
 
   const handleReturnToDashboard = () => {
-    console.log("🔴 Reset Game Triggered - Clearing localStorage");
+    
     resetGame(); 
     localStorage.removeItem("finalScore"); 
     localStorage.removeItem("finalTime");
