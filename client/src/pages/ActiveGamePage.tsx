@@ -38,7 +38,7 @@ useEffect(() => {
       score: score,
 
       // @ts-ignore
-      userId: Auth.getProfile().id,
+      username: Auth.getProfile().id,
 
       gamesId: Number(game.id),
     };
