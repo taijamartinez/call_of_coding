@@ -1,10 +1,10 @@
 import express from 'express';
 import {
   getAllUsers,
-  getUserById,
   createUser,
   updateUser,
   deleteUser,
+  getUserByUsername,
 } from '../../controllers/user-controller.js';
 
 const router = express.Router();
@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/', getAllUsers);
 
 // GET /users/:id - Get a user by id
-router.get('/:id', getUserById);
+router.get('/:id', getUserByUsername);
 
 // POST /users - Create a new user
 router.post('/', createUser);

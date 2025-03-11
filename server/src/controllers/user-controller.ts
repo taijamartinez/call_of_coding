@@ -13,11 +13,12 @@ export const getAllUsers = async (_req: Request, res: Response) => {
   }
 };
 
-// GET /Users/:id
-export const getUserById = async (req: Request, res: Response) => {
-  const { id } = req.params;
+// GET /Users/:username
+export const getUserByUsername = async (req: Request, res: Response) => {
+  const { username } = req.params;
   try {
-    const user = await User.findByPk(id, {
+    const user = await User.findOne({
+      where: { username },
       attributes: { exclude: ['password'] }
     });
     if (user) {
