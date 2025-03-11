@@ -1,6 +1,11 @@
 import { Request, Response } from 'express';
 import { Leaderboard, User, Games } from '../models/index.js';
 
+interface Score {
+  userId: number;
+  score: number;
+  gamesId: string;
+}
 
 // GET /leaderboard - Get all leaderboard scores
 export const getAllScores = async (_unusedReq: Request, res: Response) => {
@@ -43,23 +48,22 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
 // POST /leaderboard - Create a new leaderboard entry
 export const createLeaderboardEntry = async (req: Request, res: Response) => {
 
-  const { score, username, gamesId } = req.body;
+  const { score, userId, gamesId } = (req.body as Score);
 
- console.log(req.body);
   try {
     // Validate user existence
-    const userExists = await User.findByPk(username);
+    const userExists = await User.findByPk(userId);
     if (!userExists) {
       return res.status(400).json({ message: 'Invalid username. User does not exist.' });
     }
 
     // Validate game existence
-    const gameExists = await Games.findByPk(gamesId);
-    if (!gameExists) {
-      return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
-    }
-
-    const newEntry = await Leaderboard.create({ score, username, gamesId });
+    // const gameExists = await Games.findOne({where:{gamesId}});
+    // if (!gameExists) {
+    //   return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
+    // }
+//fix this! make username & gamesId properties have consistant names and data types througout application 
+    const newEntry = await Leaderboard.create({ score, username:userId, gamesId: gamesId });
 
     return res.status(201).json({
       message: 'Leaderboard entry created successfully',

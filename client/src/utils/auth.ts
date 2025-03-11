@@ -4,7 +4,7 @@ class AuthService {
   getProfile() {
     // Decode and return the token if available
     const token = this.getToken();
-    return token ? jwtDecode<JwtPayload>(token) : null;
+    return token ? jwtDecode<any>(token) : null;
   }
 
   loggedIn() {

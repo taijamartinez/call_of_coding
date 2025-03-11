@@ -5,23 +5,16 @@ interface GameAttributes {
   title: string;
   description: string;
   image: string; 
-  link: string;
+  gamesId: string;
 }
 
 //interface GameCreationAttributes extends Optional<GameAttributes, 'id'> {}
 
-export class Games extends Model<GameAttributes> implements GameAttributes {
-  public id!: number;
-  public title!: string;
-  public description!: string;
-  public image!: string;
-  public link!: string;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
-  
+export class Games extends Model<GameAttributes>{
 
 }
+
+
 
 export function initGameModel(sequelize: Sequelize): typeof Games {
   Games.init(
@@ -44,7 +37,7 @@ export function initGameModel(sequelize: Sequelize): typeof Games {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      link: {
+      gamesId: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
