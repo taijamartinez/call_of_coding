@@ -2,7 +2,7 @@ import Auth from "../utils/auth.js";
 
 export interface Score {
 
-    userId: number;
+    username: number;
     score: number;
     gamesId: number;
 }
