@@ -3,7 +3,8 @@ import "./css/GameDashboardPage.css";
 import backgroundImage from "../assets/game-dashboard-bg.png";
 
 // Importing game images
-import fixBrokenFunctionImg from "../assets/fix-broken-function.png";
+import fixBrokenFunctionImg from "../assets/GameBG4.jpg";
+import glitchWarsImg from "../assets/GameBG2.jpg";
 import bugBusterImg from "../assets/bug-buster.png";
 import codeQuestImg from "../assets/code-quest.png";
 import codeRushImg from "../assets/code-rush.png";
@@ -19,7 +20,7 @@ const games = [
   {
     title: "Glitch Wars",
     description: "The system is unstable, and glitches are taking over! Battle rogue code, patch corrupted files, and restore order before the digital world collapses.",
-    image: fixBrokenFunctionImg,
+    image: glitchWarsImg,
     link: "glitch-wars"
     
   },
