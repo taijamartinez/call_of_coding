@@ -231,7 +231,7 @@ export const gameData = [
       },
       {
         id: "ctrl-alt-defeat",
-        title: "Ctrl+Alt+Defeat",
+        title: "Ctrl + Alt + Defeat",
         story: "A rogue developer left behind a cursed infinite loop. Find and fix the issue before it consumes all system memory!",
         questions: [
           {
