@@ -20,10 +20,10 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   }
 
   try {
-    // Check if JWT_SECRET is available in the environment variables
-    const secret = process.env.JWT_SECRET as string;
+    // Check if JWT_SECRET_KEY is available in the environment variables
+    const secret = process.env.JWT_SECRET_KEY as string;
     if (!secret) {
-      return res.status(500).json({ status: 'error', message: "Server error. JWT secret is not defined." });
+      return res.status(500).json({ status: 'error', message: "Server error. JWT secret key is not defined." });
     }
 
     // Decode and verify the token
