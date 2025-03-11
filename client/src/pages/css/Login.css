@@ -49,14 +49,15 @@
     display: flex; /* Use flexbox */
     flex-direction: column; /* Stack children vertically */
     align-items: center; 
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     text-align: center;
     min-height: 100vh;
     padding: 0 10px;
+    
   }
 
   /* PAGE HEADER CSS */
@@ -148,6 +149,12 @@
     height: auto;
     max-width: 400px;
     width: 90%;
+
+    position: absolute; 
+    left: 50%;
+    bottom: 5%; 
+    transform: translateX(-50%);
+    
   
     /* Green Glow Effect */
      box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); 
@@ -189,6 +196,10 @@
 .error-message {
     color: red;
     font-size: .8rem;
+}
+
+.title-container {
+  margin-top: 10vh; /* Adjust this value to move it down */
 }
 
 /* Add responsive behavior */
