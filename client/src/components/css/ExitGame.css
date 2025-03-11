@@ -1,0 +1,95 @@
+/* ExitGame.css */
+
+/* Overlay for the exit game button */
+.exit-game-overlay {
+    position: fixed; /* Fixed position to keep it in place */
+    bottom: 20px; /* Position at the bottom */
+    right: 20px; /* Position at the right */
+    z-index: 1000; /* High z-index to ensure it's above other elements */
+  }
+  
+  /* Styling for the "Open Modal" button */
+  .exit-game-overlay button {
+    background-color: #ff0000; /* Red background for visibility */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Press Start 2P", cursive;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  }
+  
+  .exit-game-overlay button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    transform: scale(1.05);
+  }
+  
+  /* Modal styling */
+  .exit-game-modal {
+    background-color: #1a1a2e; /* Dark background */
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00eaff;
+    box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+    text-align: center;
+    z-index: 1001; /* Ensure modal is above the overlay */
+  }
+  
+  .exit-game-modal h2 {
+    font-size: 1.5rem;
+    color: #00eaff;
+    font-family: "Press Start 2P", cursive;
+    margin-bottom: 15px;
+  }
+  
+  .exit-warning {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .exit-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .exit-button {
+    padding: 10px 20px;
+    border: 2px solid #00eaff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Press Start 2P", cursive;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .resume-btn {
+    background-color: rgba(0, 234, 255, 0.1);
+    color: #00eaff;
+  }
+  
+  .resume-btn:hover {
+    background-color: rgba(0, 234, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
+  }
+  
+  .exit-btn {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ff0000;
+    border-color: #ff0000;
+  }
+  
+  .exit-btn:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  }

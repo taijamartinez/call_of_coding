@@ -36,7 +36,7 @@ const games = [
     link: "code-quest"
   },
   {
-    title: "Ctrl+Alt+Defeat",
+    title: "Ctrl + Alt + Defeat",
     description: "The ultimate coding showdown! Solve as many programming challenges as possible before your system crashes.",
     image: codeRushImg,
     link: "ctrl-alt-defeat"
