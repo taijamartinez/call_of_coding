@@ -9,6 +9,7 @@ class Leaderboard extends Model {
   public username!: string; 
   public score!: number; 
   public gamesId!: number; 
+
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
   

@@ -33,14 +33,15 @@ if (!game) {
 // Navigate to Game Completion when all questions are answered
 useEffect(() => {
   if (currentQuestionIndex >= game.questions.length) {
+
     // get score info 
     const leaderboardEntry: Score = {
       score: score,
 
-      // @ts-ignore
-      username: Auth.getProfile().id,
+     
+      userId: Auth.getProfile()?.id ?? 0,
 
-      gamesId: Number(game.id),
+      gamesId: game.id,
     };
     // send it to the backend
     addScore(leaderboardEntry);
