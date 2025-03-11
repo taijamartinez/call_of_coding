@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect, useContext, ReactNode } from "react";
 
+import { useLocation } from "react-router-dom";
+
 interface GameContextType {
     score: number;
     time: number;
@@ -18,6 +20,8 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [score, setScore] = useState(readLs("score"));
     const [time, setTime] = useState(readLs("time"));
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(readLs("currentQuestionIndex"));
+
+    const location = useLocation();
 
     useEffect(() => {
         const timer = setInterval(() => setTime((prevTime: number) => prevTime + 1), 1000);
@@ -47,7 +51,17 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setScore(0);
         setTime(0);
         setCurrentQuestionIndex(0);
+        localStorage.removeItem("score");
+        localStorage.removeItem("time");
+        localStorage.removeItem("currentQuestionIndex");
     };
+
+    useEffect(() => {
+        const isOnGamePage = location.pathname.startsWith("/game"); // Adjust based on your route
+        if (!isOnGamePage) {
+            resetGame();
+        }
+    }, [location.pathname]);
 
     return (
         <GameContext.Provider value={{ score, time, currentQuestionIndex, handleCorrectAnswer, resetGame }}>
