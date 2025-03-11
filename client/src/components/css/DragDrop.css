@@ -79,3 +79,36 @@
     color: white;
     text-shadow: 0 0 5px white;
   }
+
+  /* CORRECT OR TRY AGAIN NOTIFICATION */
+
+  .notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    animation: fadeInOut 1.5s ease-in-out;
+  }
+  
+  .notification.success {
+    background-color: rgba(0, 255, 127, 0.9); /* Green */
+  }
+  
+  .notification.error {
+    background-color: rgba(255, 69, 58, 0.9); /* Red */
+  }
+  
+  /* Fade in and out animation */
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+    10% { opacity: 1; transform: translateY(0) translateX(-50%); }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10px) translateX(-50%); }
+  }
