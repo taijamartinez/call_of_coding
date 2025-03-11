@@ -1,7 +1,7 @@
 import Auth from "../utils/auth.js";
 
 export interface Score {
-    userId: number;
+    username: number;
     score: number;
     gamesId: number;
 }
@@ -9,7 +9,7 @@ export interface Score {
 
 export async function addScore(score: Score) {
     try{
-      const response = await fetch("/api/leaderboard", {
+      const response = await fetch("/api/leaderboard/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

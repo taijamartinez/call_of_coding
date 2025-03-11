@@ -18,6 +18,9 @@ const { gameId } = useParams<{ gameId: string }>();
 const navigate = useNavigate();
 const game = Object.values(gameData).find((g) => g.id === gameId);
 const { score, time, currentQuestionIndex, handleCorrectAnswer } = useGame();
+const userProfile = Auth.getProfile();
+const username = userProfile ? (userProfile as any).id : "Guest";
+
 
 // checks if the game user chose to play exists
 if (!game) {
@@ -31,18 +34,18 @@ useEffect(() => {
     // get score info 
     const leaderboardEntry: Score = {
       score: score,
-      // @ts-ignore
-      userId: Auth.getProfile().id,
+      // @ts-ignore 
+      username: userProfile.id,
       gamesId: Number(game.id),
     };
     // send it to the backend
     addScore(leaderboardEntry);
     navigate(`/game-completion`, { 
-      state: { score, time, gameTitle: game.title },
+      state: { score, time, username, gameTitle: game.title },
       replace: true,
      });
   }
-}, [currentQuestionIndex, navigate,]);
+}, [currentQuestionIndex, navigate, game, score, time, userProfile]);
 
 
     return (

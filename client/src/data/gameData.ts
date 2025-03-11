@@ -11,51 +11,51 @@ export const gameData = [
             options: ["let x = 5;", "const x = 5;", "var x = 5;"],
             correctAnswer: "const x = 5;",
           },
-          {
-            text: "Which method converts JSON into a JavaScript object?",
-            options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()"],
-            correctAnswer: "JSON.parse()",
-          },
-          {
-            text: "What does the 'let' keyword do in JavaScript?",
-            options: ["Declares a function", "Declares a constant", "Declares a block-scoped variable"],
-            correctAnswer: "Declares a block-scoped variable",
-          },
-          {
-            text: "Which algorithm is commonly used for encrypting data?",
-            options: ["Bubble Sort", "RSA", "Merge Sort"],
-            correctAnswer: "RSA",
-          },
-          {
-            text: "What does 'JSON.stringify()' do?",
-            options: ["Converts a JavaScript object into a JSON string", "Parses a JSON string", "Converts JSON into a JavaScript object"],
-            correctAnswer: "Converts a JavaScript object into a JSON string",
-          },
-          {
-            text: "Which protocol is most commonly used to send data over the web?",
-            options: ["HTTP", "SMTP", "FTP"],
-            correctAnswer: "HTTP",
-          },
-          {
-            text: "What is the correct way to handle errors in JavaScript?",
-            options: ["if statement", "for loop", "try-catch block"],
-            correctAnswer: "try-catch block",
-          },
-          {
-            text: "Which command is used to stop a Node.js server?",
-            options: ["ctrl+c", "exit", "stop"],
-            correctAnswer: "ctrl+c",
-          },
-          {
-            text: "What is a SQL injection attack?",
-            options: ["Injecting malicious code into an SQL query", "Overloading a server with requests", "Inserting incorrect data into a database"],
-            correctAnswer: "Injecting malicious code into an SQL query",
-          },
-          {
-            text: "What is the most secure way to store passwords in a database?",
-            options: ["Plaintext", "Hashing", "Encryption"],
-            correctAnswer: "Hashing",
-          },
+        //   {
+        //     text: "Which method converts JSON into a JavaScript object?",
+        //     options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()"],
+        //     correctAnswer: "JSON.parse()",
+        //   },
+        //   {
+        //     text: "What does the 'let' keyword do in JavaScript?",
+        //     options: ["Declares a function", "Declares a constant", "Declares a block-scoped variable"],
+        //     correctAnswer: "Declares a block-scoped variable",
+        //   },
+        //   {
+        //     text: "Which algorithm is commonly used for encrypting data?",
+        //     options: ["Bubble Sort", "RSA", "Merge Sort"],
+        //     correctAnswer: "RSA",
+        //   },
+        //   {
+        //     text: "What does 'JSON.stringify()' do?",
+        //     options: ["Converts a JavaScript object into a JSON string", "Parses a JSON string", "Converts JSON into a JavaScript object"],
+        //     correctAnswer: "Converts a JavaScript object into a JSON string",
+        //   },
+        //   {
+        //     text: "Which protocol is most commonly used to send data over the web?",
+        //     options: ["HTTP", "SMTP", "FTP"],
+        //     correctAnswer: "HTTP",
+        //   },
+        //   {
+        //     text: "What is the correct way to handle errors in JavaScript?",
+        //     options: ["if statement", "for loop", "try-catch block"],
+        //     correctAnswer: "try-catch block",
+        //   },
+        //   {
+        //     text: "Which command is used to stop a Node.js server?",
+        //     options: ["ctrl+c", "exit", "stop"],
+        //     correctAnswer: "ctrl+c",
+        //   },
+        //   {
+        //     text: "What is a SQL injection attack?",
+        //     options: ["Injecting malicious code into an SQL query", "Overloading a server with requests", "Inserting incorrect data into a database"],
+        //     correctAnswer: "Injecting malicious code into an SQL query",
+        //   },
+        //   {
+        //     text: "What is the most secure way to store passwords in a database?",
+        //     options: ["Plaintext", "Hashing", "Encryption"],
+        //     correctAnswer: "Hashing",
+        //   },
         ],
       },
       {

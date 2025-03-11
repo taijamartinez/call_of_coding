@@ -5,13 +5,13 @@ const router = Router();
 
 router.post("/submit", async (_req, _res) => {
   try {
-    const { userId, gameId, score } = _req.body;
+    const { username, gameId, score, time } = _req.body;
 
-    if (!userId || !gameId || !score) {
+    if (!username || !gameId || !score || !time) {
       return _res.status(400).json({ error: "Missing required fields" });
     }
 
-    const newEntry = await Leaderboard.create({ userId, gameId, score });
+    const newEntry = await Leaderboard.create({ username, gameId, score, time });
     return _res.status(201).json(newEntry);
   } catch (error) {
     return _res.status(500).json({ error: "Failed to submit score" });
