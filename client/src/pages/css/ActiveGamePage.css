@@ -2,7 +2,7 @@
 
  /* Ensure the background covers the entire screen */
 .active-game-container {
-  background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e);
+  /* background: radial-gradient(circle at 50% 50%, #1a1a2e, #0f0f1e); */
   text-align: center;
   padding: 20px;
   width: 100vw;
@@ -16,11 +16,35 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('../../assets/GameBG7.png');
   animation: moveBackground 60s linear infinite;
   overflow: hidden;
   padding-top: 80px;
   position: relative; /* Ensure absolute elements stay within */
+}
+
+/* BG VIDEO */
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; 
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 aspect ratio fix */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 aspect ratio fix */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none; 
 }
 
 /* Open Modal Button */
@@ -80,7 +104,9 @@
   max-width: 80%;
 }
 
+
 /* Fix for small screens */
+
 @media screen and (max-width: 768px) {
   .active-game-header {
     flex-direction: column;
