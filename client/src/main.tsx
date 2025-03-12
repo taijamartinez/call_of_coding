@@ -37,16 +37,12 @@ const router = createBrowserRouter([
         element: <NavFooterWrapper> <ProtectedRoute element={<GameDashboardPage />} /> </NavFooterWrapper>
       },
       {
-        path: '/active-game',
-        element: <ProtectedRoute element={<ActiveGamePage />}/>,
-      },
-      {
         path: '/game/:gameId', 
         element: <ProtectedRoute element={<ActiveGamePage />} />,
       },
       {
         path: '/game-completion',
-        element: <ProtectedRoute element={<GameCompletion />} />,
+        element: <NavFooterWrapper><ProtectedRoute element={<GameCompletion />} /></NavFooterWrapper>,
       },
       {
         path: '/leaderboard',
