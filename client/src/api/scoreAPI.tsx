@@ -20,7 +20,7 @@ export async function addScore(score: Score) {
         },
         body: JSON.stringify(score)
       });
-  
+    
       if (!response.ok) {
         throw new Error("Failed to add score.");
       }
