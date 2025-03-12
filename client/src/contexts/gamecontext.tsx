@@ -8,6 +8,8 @@ interface GameContextType {
     currentQuestionIndex: number;
     handleCorrectAnswer: () =>void;
     resetGame: () => void;
+    pauseTimer: () => void;
+    resumeTimer: () => void;
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -20,13 +22,17 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [score, setScore] = useState(readLs("score"));
     const [time, setTime] = useState(readLs("time"));
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(readLs("currentQuestionIndex"));
+    const [isRunning, setIsRunning] = useState(true);
 
     const location = useLocation();
 
     useEffect(() => {
-        const timer = setInterval(() => setTime((prevTime: number) => prevTime + 1), 1000);
+        let timer: NodeJS.Timeout;
+        if (isRunning) {
+            timer = setInterval(() => setTime((prevTime: number) => prevTime + 1), 1000);
+        }
         return () => clearInterval(timer);
-    }, []);
+    }, [isRunning]);
 
     useEffect(() => {
         writeLs("score", score);
@@ -51,10 +57,14 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setScore(0);
         setTime(0);
         setCurrentQuestionIndex(0);
+        setIsRunning(true);
         localStorage.removeItem("score");
         localStorage.removeItem("time");
         localStorage.removeItem("currentQuestionIndex");
     };
+
+    const pauseTimer = () => setIsRunning(false);
+    const resumeTimer = () => setIsRunning(true);
 
     useEffect(() => {
         const isOnGamePage = location.pathname.startsWith("/game"); // Adjust based on your route
@@ -64,7 +74,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }, [location.pathname]);
 
     return (
-        <GameContext.Provider value={{ score, time, currentQuestionIndex, handleCorrectAnswer, resetGame }}>
+        <GameContext.Provider value={{ score, time, currentQuestionIndex, handleCorrectAnswer, resetGame, pauseTimer, resumeTimer }}>
         {children}
         </GameContext.Provider>
     );
