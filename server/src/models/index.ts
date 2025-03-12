@@ -23,7 +23,7 @@ const Leaderboard = initLeaderboardModel(sequelize);
 const Games = initGameModel(sequelize);
 
 User.hasMany(Leaderboard, { foreignKey: 'userId' });
-Leaderboard.belongsTo(User, { foreignKey: 'userId', as: 'User' });
+Leaderboard.belongsTo(User, { foreignKey: "userId", as: 'User' });
 Games.hasMany(Leaderboard, { foreignKey: 'gamesId' });
 Leaderboard.belongsTo(Games, { foreignKey: 'gamesId', as: 'Game' });
 
