@@ -27,7 +27,6 @@ const userProfile = Auth.getProfile(); //Gets the user profile
 const userId = userProfile ? (userProfile as any).id : 0;
 
 
-
 // checks if the game user chose to play exists
 if (!game) {
   console.error("Game not found!");
@@ -60,7 +59,7 @@ useEffect(() => {
       score, 
       userId, 
       gamesId: gameIdNumber?.toString() || "", 
-      gameTime: number,
+      gameTime: time,
     };
 
     addScore(leaderboardEntry).then((response) => {
