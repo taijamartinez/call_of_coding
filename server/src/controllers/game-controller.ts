@@ -39,16 +39,16 @@ export const getGameById = async (req: Request, res: Response) => {
 
 // // Create a new game
 export const createGame = async (req: Request, res: Response) => {
-    const { title, gamesId, description, image } = req.body;
+    const { title, link, description, image } = req.body;
   
-    if (!title || !gamesId || !description || !image) {
-      return res.status(400).json({ error: "All fields (title, gamesId, description, image) are required" });
+    if (!title || !link || !description || !image) {
+      return res.status(400).json({ error: "All fields (title, link, description, image) are required" });
     }
   
     try {
       const newGame = await Games.create({
           title,
-          gamesId,
+          link,
           description,
           image,
           id: 0
@@ -87,5 +87,7 @@ export const updateGame = async (req: Request, res: Response) => {
 //     res.status(500).json({ message: "Error deleting game", error });
 //   }
 // };
+
+
 
 

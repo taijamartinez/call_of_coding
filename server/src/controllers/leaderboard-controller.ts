@@ -1,24 +1,21 @@
 import { Request, Response } from 'express';
 import { Leaderboard, User, Games } from '../models/index.js';
 
-interface Score {
-  userId: number;
-  score: number;
-  gamesId: string;
-}
-
 // GET /leaderboard - Get all leaderboard scores
 export const getAllScores = async (_unusedReq: Request, res: Response) => {
   try {
     const scores = await Leaderboard.findAll({
       include: [
-        { model: User, as: 'User', attributes: ['username'] },
-        { model: Games, as: 'Game', attributes: ['title'] },
+
+        { model: User, as: 'User', attributes: ['id', 'username'] }, 
+        { model: Games, as: 'Game', attributes: ['id', 'title'] },
+
       ],
+      order: [['score', 'DESC'], ['gameTime', 'ASC']],
     });
     return res.json(scores);
   } catch (error: any) {
-    console.error(error);
+    console.error("❌ Error fetching leaderboard:", error);
     return res.status(500).json({ message: 'Internal Server Error' });
   }
 };
@@ -29,7 +26,7 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
   try {
     const entry = await Leaderboard.findByPk(id, {
       include: [
-        { model: User, as: 'User', attributes: ['id', 'username'] },
+        { model: User, as: 'User', attributes: ['id', 'username'] }, 
         { model: Games, as: 'Game', attributes: ['title'] },
       ],
     });
@@ -45,32 +42,53 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
   }
 };
 
-// POST /leaderboard - Create a new leaderboard entry
+// POST /leaderboard - Create or update a leaderboard entry
 export const createLeaderboardEntry = async (req: Request, res: Response) => {
-
-  const { score, userId, gamesId } = (req.body as Score);
+  const { score, userId, gamesId, gameTime } = req.body;
 
   try {
-    // Validate user existence
     const userExists = await User.findByPk(userId);
     if (!userExists) {
-      return res.status(400).json({ message: 'Invalid username. User does not exist.' });
+      return res.status(400).json({ message: 'Invalid userId. User does not exist.' });
     }
 
-    // Validate game existence
-    // const gameExists = await Games.findOne({where:{gamesId}});
-    // if (!gameExists) {
-    //   return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
-    // }
-//fix this! make username & gamesId properties have consistant names and data types througout application 
-    const newEntry = await Leaderboard.create({ score, username:userId, gamesId: gamesId });
+    const gameExists = await Games.findByPk(gamesId);
+    if (!gameExists) {
+      return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
+    }
+
+    let entry = await Leaderboard.findOne({ where: { userId, gamesId } });
+
+    if (entry) {
+      console.log(`Existing entry found for user ${userId} in game ${gamesId}:`, entry);
+
+      if (score > entry.score) {
+        entry.score = score;
+        entry.gameTime = gameTime; 
+        await entry.save();
+
+        return res.status(200).json({
+          message: 'Leaderboard entry updated successfully',
+          entry,
+        });
+      }
+
+      console.log(`⚠️ Score ${score} is not higher than ${entry.score}. Keeping existing values.`);
+      return res.status(200).json({
+        message: '⚠️ Score was not higher. No updates made.',
+        entry,
+      });
+    }
+
+    entry = await Leaderboard.create({ score, userId, gamesId, gameTime });
 
     return res.status(201).json({
       message: 'Leaderboard entry created successfully',
-      entry: newEntry,
+      entry,
     });
+
   } catch (error: any) {
-    console.error(error);
+    console.error("❌ Error updating leaderboard:", error);
     return res.status(400).json({ message: error.message });
   }
 };
@@ -83,32 +101,24 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
   try {
     const entry = await Leaderboard.findByPk(id);
     if (!entry) {
-      console.error('Leaderboard entry not found', id);
       return res.status(404).json({ message: 'Leaderboard entry not found' });
     }
 
-    if (userId) {
-      const userExists = await User.findByPk(userId);
-      if (!userExists) {
-        console.error('Invalid Userid', userId);
-        return res.status(400).json({ message: 'Invalid username. User does not exist.' });
-      }
+    if (userId !== entry.userId) {
+      return res.status(403).json({ message: 'You can only update your own leaderboard entry.' });
     }
 
     if (gamesId) {
       const gameExists = await Games.findByPk(gamesId);
       if (!gameExists) {
-        console.error('Game not found', gamesId);
         return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
       }
     }
 
-    entry.score = score || entry.score;
-    entry.userId = userId ?? entry.userId;
-    entry.gamesId = gamesId || entry.gamesId;
+    entry.score = score ?? entry.score;
+    entry.gamesId = gamesId ?? entry.gamesId;
 
     await entry.save();
-    console.log('Leaderboard entry updated', entry);
 
     return res.json({
       message: 'Leaderboard entry updated successfully',
