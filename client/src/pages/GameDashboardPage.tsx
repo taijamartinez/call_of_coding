@@ -1,3 +1,4 @@
+// import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/GameDashboardPage.css";
 import backgroundImage from "../assets/game-dashboard-bg.png";
@@ -43,6 +44,8 @@ const games = [
     link: "ctrl-alt-defeat"
   },
 ];
+
+
 
 const GameDashboardPage = () => {
   return (

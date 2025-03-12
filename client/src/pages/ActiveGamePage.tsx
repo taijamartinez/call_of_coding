@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState  } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { gameData } from "../data/gameData"; // Imports game data- handles game questions, story, and title
 import { gameBackgrounds } from "../data/gameBGs";  // Imports game backgrounds
@@ -18,9 +18,10 @@ const ActiveGamePage: React.FC = () => {
 
 const { gameId } = useParams<{ gameId: string }>(); // Gets the game ID from the URL
 const navigate = useNavigate();  // Navigates to different pages
+const [loading, setLoading] = useState(true); // Loading state for the game
 const game = Object.values(gameData).find((g) => g.id === gameId); // Finds the game based on the game ID
 const { score, time, currentQuestionIndex, handleCorrectAnswer } = useGame(); // Gets the game state from the game context
-const userProfile = Auth.getProfile(); // Gets the user profile
+const userProfile = Auth.getProfile(); //Gets the user profile
 const username = userProfile ? (userProfile as any).id : "Guest"; // Gets the username from the user profile
 
 
@@ -33,6 +34,14 @@ if (!game) {
 const gameBackground = gameBackgrounds[game.id];
 
 
+ // Simulate loading game data
+ useEffect(() => {
+  setTimeout(() => {
+    setLoading(false); // Set loading to false after 2 seconds (or when your game data is ready)
+  }, 1500); // Simulate loading time
+}, []);
+
+
 // Navigate to Game Completion when all questions are answered
 useEffect(() => {
   if (currentQuestionIndex >= game.questions.length) {
@@ -41,7 +50,6 @@ useEffect(() => {
     const leaderboardEntry: Score = {
       score: score,
 
-     
       userId: Auth.getProfile()?.id ?? 0,
 
       gamesId: game.id,
@@ -71,6 +79,15 @@ useEffect(() => {
          </div>
         )} 
 
+        {/* Loading Screen */}
+      {loading ? (
+        <div className="loading-screen">
+          <h1>LOADING GAME...</h1>
+          {/* Optionally, you can add a spinner or animation here */}
+        </div>
+      ) : (
+        <>
+
 
           <div className="active-game-header">
           <div className="active-game-timer">
@@ -98,6 +115,8 @@ useEffect(() => {
        {/* Exit Game Component */} 
         <ExitGame/>
 
+        </>
+      )}
     </div>
   );
 };
