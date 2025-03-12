@@ -6,8 +6,10 @@ export const getAllScores = async (_unusedReq: Request, res: Response) => {
   try {
     const scores = await Leaderboard.findAll({
       include: [
+
         { model: User, as: 'User', attributes: ['id', 'username'] }, 
         { model: Games, as: 'Game', attributes: ['id', 'title'] },
+
       ],
       order: [['score', 'DESC'], ['gameTime', 'ASC']],
     });
