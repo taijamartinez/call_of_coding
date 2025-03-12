@@ -4,7 +4,8 @@ export interface Score {
 
     userId: number;
     score: number;
-    gamesId: string;
+    gamesId: number;
+    gameTime: number;
 }
 
 
