@@ -57,7 +57,7 @@
   
   /* Drop Zone */
   .drop-zone {
-    border: 2px dashed #ff0000;
+    border: 2px dashed #00eaff;
     padding: 20px;
     width: 60%;
     min-height: 50px;
