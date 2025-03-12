@@ -52,23 +52,33 @@
     justify-content: center;
     position: relative;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
     text-align: center;
     min-height: 100vh;
     padding: 0 10px;
+    
   }
 
   /* PAGE HEADER CSS */
 
   /* Call-of-Coding text */
-.game-title{
-    display: flex;
-    justify-content: center;
+.login-game-title{
+    /* display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    font-family: "Bungee Hairline", "DM Sans", sans-serif;
+    color: #00ff00;
+    font-size: 6rem; */
+    position: absolute;
+    top: 5%; /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     font-family: "Bungee Hairline", "DM Sans", sans-serif;
     color: #00ff00;
     font-size: 6rem;
+    width: 100%;
    
 }
 
@@ -148,6 +158,12 @@
     height: auto;
     max-width: 400px;
     width: 90%;
+
+    position: absolute; 
+    left: 50%;
+    bottom: 5%; 
+    transform: translateX(-50%);
+    
   
     /* Green Glow Effect */
      box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); 
@@ -189,6 +205,10 @@
 .error-message {
     color: red;
     font-size: .8rem;
+}
+
+.title-container {
+  margin-top: 10vh; /* Adjust this value to move it down */
 }
 
 /* Add responsive behavior */
