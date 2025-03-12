@@ -11,17 +11,8 @@
     margin: 1.5rem auto;
     box-shadow: 0 0 15px rgb(0, 255, 26);
     text-align: center;
+    max-height: 50vh;
   }
-
-  /* QUESTION TEXT */
-  
-  /* Question Header */
-  /* .drag-drop-container h2 {
-    font-size: 1.5rem;
-    color: #39ff14;
-    text-shadow: 0 0 5px #264a20;
-    margin-bottom: 1rem;
-  } */
 
   
   /* ANSWER OPTIONS */
@@ -37,14 +28,26 @@
   
   /* Draggable Answer Options */
   .draggable-option {
-    background: linear-gradient(135deg, #768177b1, #ecebebb0);
+    /* background: linear-gradient(135deg, #768177b1, #ecebebb0);
     color: #fff;
     padding: 12px 15px;
     border-radius: 5px;
     text-shadow: 0 0 5px #fff;
     cursor: grab;
     font-weight: bold;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; */
+    background: linear-gradient(135deg, #768177b1, #ecebebb0);
+    color: #fff;
+    padding: 6px 12px;  /* Reduced padding */
+    font-size: 0.9rem;  /* Slightly smaller text */
+    border-radius: 5px;
+    text-shadow: 0 0 3px #fff;
+    cursor: grab;
+    font-weight: bold;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    
+    
+    
   }
 
   .draggable-option:active {
@@ -54,7 +57,7 @@
   
   /* Drop Zone */
   .drop-zone {
-    border: 2px dashed #ff0000;
+    border: 2px dashed #00eaff;
     padding: 20px;
     width: 60%;
     min-height: 50px;

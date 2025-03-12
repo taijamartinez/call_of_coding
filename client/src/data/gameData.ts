@@ -152,8 +152,8 @@ export const gameData = [
           },
           {
             text: "What does the 'finally' block do in a try-catch statement?",
-            options: ["Executes code regardless of whether an error occurs", "Only executes when an error occurs", "Executes only if the try block executes successfully"],
-            correctAnswer: "Executes code regardless of whether an error occurs",
+            options: ["Executes code regardless of any errors", "Only executes when an error occurs", "Executes only if the try block executes successfully"],
+            correctAnswer: "Executes code regardless of any errors",
           },
           {
             text: "What is the correct syntax for a ternary operator?",
@@ -265,8 +265,8 @@ export const gameData = [
           },
           {
             text: "What will happen if you call 'return' inside a for-loop?",
-            options: ["It will stop the loop and return from the function", "It will break the loop", "It will continue the loop"],
-            correctAnswer: "It will stop the loop and return from the function",
+            options: ["Stops the loop and return from the function", "It will break the loop", "It will continue the loop"],
+            correctAnswer: "Stops the loop and return from the function",
           },
           {
             text: "Which loop would be best to iterate over an array in reverse order?",

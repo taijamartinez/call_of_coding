@@ -71,7 +71,7 @@ const vimeoVideoUrl = "https://player.vimeo.com/video/1062656659?autoplay=1&loop
       {/* Title and text section */}
 
       <div className="title-container">
-        <h1 className="game-title">Call-of-Coding</h1>
+        <h1 className="login-game-title">Call-of-Coding</h1>
         <p className="warning-text"></p>
 
       </div>
