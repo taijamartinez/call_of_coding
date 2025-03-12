@@ -19,6 +19,7 @@ const ActiveGamePage: React.FC = () => {
 const { gameId } = useParams<{ gameId: string }>(); // Gets the game ID from the URL
 const navigate = useNavigate();  // Navigates to different pages
 const [loading, setLoading] = useState(true); // Loading state for the game
+const [gameStarted, setGameStarted] = useState(false); // Track if the game has started
 const game = Object.values(gameData).find((g) => g.id === gameId); // Finds the game based on the game ID
 const { score, time, currentQuestionIndex, handleCorrectAnswer } = useGame(); // Gets the game state from the game context
 const userProfile = Auth.getProfile(); //Gets the user profile
@@ -37,7 +38,8 @@ const gameBackground = gameBackgrounds[game.id];
  // Simulate loading game data
  useEffect(() => {
   setTimeout(() => {
-    setLoading(false); // Set loading to false after 2 seconds (or when your game data is ready)
+    setLoading(false); // Set loading to false after 1.5 seconds (or when your game data is ready)
+    setGameStarted(true); // Set gameStarted to true to start timer
   }, 1500); // Simulate loading time
 }, []);
 
@@ -82,7 +84,7 @@ useEffect(() => {
         {/* Loading Screen */}
       {loading ? (
         <div className="loading-screen">
-          <h1>LOADING GAME...</h1>
+          <h1 className="loading-text">Loading Game...</h1>
           {/* Optionally, you can add a spinner or animation here */}
         </div>
       ) : (
@@ -92,7 +94,7 @@ useEffect(() => {
           <div className="active-game-header">
           <div className="active-game-timer">
           {/* timer component */}
-          <Timer time={time} />
+          <Timer time={gameStarted ? time : 0} />
           </div>
 
           {/* game title */}
