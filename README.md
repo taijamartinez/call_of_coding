@@ -127,7 +127,7 @@ To test run:
 
 ## Project Links
 
-Repository: <br>
+Repository: https://github.com/taijamartinez/call_of_coding <br>
 Deployed Render Website: 
 
 
