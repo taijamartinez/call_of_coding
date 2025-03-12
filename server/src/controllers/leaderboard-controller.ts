@@ -12,7 +12,7 @@ export const getAllScores = async (_unusedReq: Request, res: Response) => {
   try {
     const scores = await Leaderboard.findAll({
       include: [
-        { model: User, as: 'User', attributes: ['username'] },
+        { model: User, as: 'User', attributes: ['id', 'username'] },
         { model: Games, as: 'Game', attributes: ['title'] },
       ],
     });
@@ -29,7 +29,7 @@ export const getLeaderboardEntryById = async (req: Request, res: Response) => {
   try {
     const entry = await Leaderboard.findByPk(id, {
       include: [
-        { model: User, as: 'User', attributes: ['username'] },
+        { model: User, as: 'User', attributes: ['id', 'username'] },
         { model: Games, as: 'Game', attributes: ['title'] },
       ],
     });
@@ -78,17 +78,19 @@ export const createLeaderboardEntry = async (req: Request, res: Response) => {
 // PUT /leaderboard/:id - Update a leaderboard entry
 export const updateLeaderboardEntry = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { score, username, gamesId } = req.body;
+  const { score, userId, gamesId } = req.body;
 
   try {
     const entry = await Leaderboard.findByPk(id);
     if (!entry) {
+      console.error('Leaderboard entry not found', id);
       return res.status(404).json({ message: 'Leaderboard entry not found' });
     }
 
-    if (username) {
-      const userExists = await User.findByPk(username);
+    if (userId) {
+      const userExists = await User.findByPk(userId);
       if (!userExists) {
+        console.error('Invalid Userid', userId);
         return res.status(400).json({ message: 'Invalid username. User does not exist.' });
       }
     }
@@ -96,22 +98,25 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
     if (gamesId) {
       const gameExists = await Games.findByPk(gamesId);
       if (!gameExists) {
+        console.error('Game not found', gamesId);
         return res.status(400).json({ message: 'Invalid gamesId. Game does not exist.' });
       }
     }
 
     entry.score = score || entry.score;
-    entry.username = username || entry.username;
+    entry.userId = userId ?? entry.userId;
     entry.gamesId = gamesId || entry.gamesId;
 
     await entry.save();
+    console.log('Leaderboard entry updated', entry);
 
     return res.json({
       message: 'Leaderboard entry updated successfully',
       entry,
     });
   } catch (error: any) {
-    console.error(error);
+    console.e
+    rror('Error updating', error);
     return res.status(400).json({ message: error.message });
   }
 };

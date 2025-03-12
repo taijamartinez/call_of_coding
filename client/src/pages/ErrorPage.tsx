@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./css/ErrorPage.css";
 import pixelIsland from "../assets/pixel-island.png"; 
-import Navbar from "../components/Navbar";
+//import Navbar from "../components/Navbar";
 
 const ErrorPage = () => {
   return (
