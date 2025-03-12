@@ -115,8 +115,7 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
       entry,
     });
   } catch (error: any) {
-    console.e
-    rror('Error updating', error);
+    console.error('Error updating', error);
     return res.status(400).json({ message: error.message });
   }
 };
