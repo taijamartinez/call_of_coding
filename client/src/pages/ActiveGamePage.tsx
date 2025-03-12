@@ -60,7 +60,7 @@ useEffect(() => {
       score, 
       userId, 
       gamesId: gameIdNumber?.toString() || "", 
-      gameTime: number;
+      gameTime: number,
     };
 
     addScore(leaderboardEntry).then((response) => {
