@@ -21,9 +21,11 @@ const navigate = useNavigate();  // Navigates to different pages
 const [loading, setLoading] = useState(true); // Loading state for the game
 const [gameStarted, setGameStarted] = useState(false); // Track if the game has started
 const game = Object.values(gameData).find((g) => g.id === gameId); // Finds the game based on the game ID
+const gameIdNumber = gameId ? Number(gameId) : null;
 const { score, time, currentQuestionIndex, handleCorrectAnswer } = useGame(); // Gets the game state from the game context
 const userProfile = Auth.getProfile(); //Gets the user profile
-const username = userProfile ? (userProfile as any).id : "Guest"; // Gets the username from the user profile
+// const username = userProfile ? (userProfile as any).id : "Guest"; 
+const userId = userProfile ? (userProfile as any).id : 0;
 
 
 // checks if the game user chose to play exists
@@ -47,23 +49,28 @@ const gameBackground = gameBackgrounds[game.id];
 // Navigate to Game Completion when all questions are answered
 useEffect(() => {
   if (currentQuestionIndex >= game.questions.length) {
+    console.log("🆔 User ID (before sending to API):", userId);
+    console.log("🎮 Game ID:", gameIdNumber);
 
-    // get score info 
-    const leaderboardEntry: Score = {
-      score: score,
+    if (!userId || !gameIdNumber) {
+      console.error("Missing userId or gameId. Aborting API request.");
+      return;
+    }
 
-      userId: Auth.getProfile()?.id ?? 0,
+    const leaderboardEntry: Score = { score, userId, gamesId: gameIdNumber, gameTime: time };
 
-      gamesId: game.id,
-    };
-    // send it to the backend
-    addScore(leaderboardEntry);
-    navigate(`/game-completion`, { 
-      state: { score, time, username, gameTitle: game.title },
-      replace: true,
-     });
+    addScore(leaderboardEntry).then((response) => {
+      if (response) {
+        navigate(`/game-completion`, { 
+          state: { score, time, userId, gameId: gameIdNumber, gameTitle: game.title },
+          replace: true,
+        });
+      } else {
+        console.error("Failed to submit score.");
+      }
+    });
   }
-}, [currentQuestionIndex, navigate, game, score, time, userProfile]);
+}, [currentQuestionIndex, navigate, game, score, time, userId]);
 
 
     return (
