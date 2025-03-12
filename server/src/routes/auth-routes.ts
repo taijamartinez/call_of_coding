@@ -11,4 +11,3 @@ router.post('/login', loginUser);
 router.post('/register', registerUser);
 
 export default router;
-
