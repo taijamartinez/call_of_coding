@@ -12,7 +12,7 @@ export const getAllScores = async (_unusedReq: Request, res: Response) => {
   try {
     const scores = await Leaderboard.findAll({
       include: [
-        { model: User, as: 'User', attributes: ['id', 'username'] },
+        { model: User, as: 'User', attributes: ['username'] },
         { model: Games, as: 'Game', attributes: ['title'] },
       ],
     });
@@ -115,8 +115,7 @@ export const updateLeaderboardEntry = async (req: Request, res: Response) => {
       entry,
     });
   } catch (error: any) {
-    console.e
-    rror('Error updating', error);
+    console.error(error);
     return res.status(400).json({ message: error.message });
   }
 };

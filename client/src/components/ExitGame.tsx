@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import "./css/ExitGame.css"; 
 import Modal from 'react-modal';
 import { useState } from "react";
+import { useGame } from "../contexts/gamecontext";
+import "./css/ExitGame.css"; 
 
 const customStyles = {
   content: {
@@ -18,20 +19,24 @@ const customStyles = {
 };
 
 const ExitGame = () => {
-    // let subtitle;
-    const [modalIsOpen, setIsOpen] = useState(false);
-    function openModal() {
-        setIsOpen(true);
-      }
-    
-      // function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-    //     subtitle.style.color = '#f00';
-    //   }
-    
-      function closeModal() {
-        setIsOpen(false);
-      }
+  const { pauseTimer, resumeTimer, resetGame } = useGame();
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+      setIsOpen(true);
+      pauseTimer(); // Pause the timer when opening modal
+  }
+
+  function closeModal() {
+      setIsOpen(false);
+      resumeTimer(); // Resume the timer when closing modal
+  }
+
+  function handleExit() {
+      resetGame(); // Reset timer and score when exiting
+  }
+
+
     return (
 
       <div className="exit-game-overlay">
@@ -54,7 +59,7 @@ const ExitGame = () => {
             <button className="exit-button resume-btn" onClick={closeModal}>
               Resume Game
             </button>
-            <Link to="/dashboard" className="exit-button exit-btn">Exit Game</Link>
+            <Link to="/dashboard" className="exit-button exit-btn" onClick={handleExit}>Exit Game</Link>
           </div>
         </div>
       </Modal>
