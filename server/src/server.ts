@@ -2,6 +2,8 @@ const forceDatabaseRefresh = false;
 
 import dotenv from 'dotenv';
 dotenv.config();
+import path from 'path';
+
 
 
 import express from 'express';
@@ -11,13 +13,15 @@ import { sequelize } from './models/index.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//REMOVED SOCKET IO- TAIJA
-app.post('/pages/leaderboardPages', (_req, _res) => {
-  // Handle the request
-});
 
 // Serves static files in the entire client's dist folder
-app.use(express.static('../client/dist'));
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+
+app.get('*', (_, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+});
 
 app.use(express.json());
 app.use(routes);
