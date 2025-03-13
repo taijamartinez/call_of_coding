@@ -34,26 +34,24 @@ Here are some previews of the webpage:
 <img src="./client/src/assets/ActiveG-SS.png" width="300">
 
 ### Leaderboard Page
-<img src="assets/images/" width="300">
+<img src="./client/src/assets/leaderboard.jpg" width="300">
 
 
 ## Installation
 
 1. Clone the repository:
 
-git clone https://github.com/alyssadailey/call-of-coding.git
+   git clone https://github.com/alyssadailey/call-of-coding.git
 
-2. Navigate into the project directory:
-
-cd call-of-coding
+2. Navigate into the project directory: cd call-of-coding
 
 3. Install dependencies:
 
-npm install
+    npm install
 
 4. Start the development server:
 
-npm run dev
+    npm run dev
 
 5. Open the application in your browser at http://localhost:5173/ (if using Vite).
 
@@ -108,15 +106,15 @@ To test run:
 
 ## Credit
 
--Front-end Development: Alyssa Dailey and Ikran Mohammed
+-Front-end Development: Alyssa Dailey and Ikran Mohammed.
 
--Back-end Development: Stacy Vonderheide and Taija Martinez
+-Back-end Development: Stacy Vonderheide and Taija Martinez.
 
--TA Diem assisted back-end to help get the leaderboard page functional
+-TA Diem assisted back-end to help get the leaderboard page functional.
 
--The creators of Call of Coding met with tutors Alister, Chris and Justin throughout the coding process to assist in any coding related questions
+-The creators of Call of Coding met with tutors Alister, Chris and Justin throughout the coding process to assist in any coding related questions.
 
--Used Vimeo to host all background videos
+-Used Vimeo to host all background videos.
 
 -Neon-blue bug background found on: https://www.vecteezy.com/
 
@@ -128,7 +126,7 @@ To test run:
 ## Project Links
 
 Repository: https://github.com/taijamartinez/call_of_coding<br>
-Deployed Render Website: 
+Deployed Render Website: https://call-of-coding-8hvx.onrender.com
 
 
 ## Questions
