@@ -12,9 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //REMOVED SOCKET IO- TAIJA
-app.post('/pages/leaderboardPages', (_req, _res) => {
+//app.post('/pages/leaderboardPages', (_req, _res) => {
   // Handle the request
-});
+//});
 
 // Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));

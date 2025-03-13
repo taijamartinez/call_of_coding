@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import { Sequelize } from 'sequelize';
 import { initUserModel } from './user.js';
 import { initLeaderboardModel } from './leaderboard.js';
@@ -6,22 +7,19 @@ import { initGameModel } from './games.js';
 
 dotenv.config();
 
+const sequelize = process.env.DB_URL
+  ? new Sequelize(process.env.DB_URL)
+  : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', process.env.DB_PASSWORD, {
+      host: 'localhost',
+      dialect: 'postgres',
+      dialectOptions: {
+        decimalNumbers: true,
+      },
+    });
 // Ensure DB_URL is correctly set
 if (!process.env.DB_URL) {
   throw new Error("Missing environment variable: DB_URL");
 }
-
-// Initialize Sequelize with SSL support
-const sequelize = new Sequelize(process.env.DB_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,  // Require SSL connection
-      rejectUnauthorized: false, // Render requires this setting
-    },
-  },
-  logging: false, // Disable SQL logs in console (optional)
-});
 
 const User = initUserModel(sequelize);
 const Leaderboard = initLeaderboardModel(sequelize);
