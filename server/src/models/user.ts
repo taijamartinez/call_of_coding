@@ -1,13 +1,13 @@
-import { DataTypes, Sequelize, Model, Optional} from 'sequelize';
+import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
 
 interface UserAttributes {
   id: number;
   username: string;
-  password: string; 
+  password: string;
 }
 
-interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+interface UserCreationAttributes extends Optional<UserAttributes, 'id'> { }
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
@@ -16,7 +16,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-  
+
 
   // Hash the password before saving the user
   public async setPassword(password: string) {
@@ -26,7 +26,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   // Validate password during login
   public async checkPassword(enteredPassword: string): Promise<boolean> {
     return bcrypt.compare(enteredPassword, this.password);
-}
+  }
 }
 
 export function initUserModel(sequelize: Sequelize): typeof User {
@@ -42,7 +42,7 @@ export function initUserModel(sequelize: Sequelize): typeof User {
         allowNull: false,
         unique: true,
       },
-        password: {
+      password: {
         type: DataTypes.STRING,
         allowNull: false,
       },

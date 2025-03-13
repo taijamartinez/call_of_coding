@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { useState } from "react";
 import { useGame } from "../contexts/gamecontext";
 import "./css/ExitGame.css"; 
+Modal.setAppElement("#root");
 
 const customStyles = {
   content: {
@@ -43,7 +44,6 @@ const ExitGame = () => {
         <button onClick={openModal}>Exit Game</button>
       <Modal
         isOpen={modalIsOpen}
-        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
