@@ -13,7 +13,6 @@ import { sequelize } from './models/index.js';
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
 // Serves static files in the entire client's dist folder
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '../client/dist')));
